@@ -1,52 +1,196 @@
-# André Tech Landing
+# André Tech — Cinematic Technical Assistance Experience
 
-Experiência cinematográfica premium para a André Tech, estruturada como um laboratório técnico de tecnologia em Medianeira.
+Experiência digital cinematográfica desenvolvida para a André Tech, uma assistência técnica localizada em Medianeira — PR.
 
-## Instalação
+O projeto combina:
+- direção visual premium
+- motion design atmosférico
+- interface cinematográfica
+- presença comercial local
+- performance web moderna
+
+Construído como uma landing page imersiva focada em:
+diagnóstico,
+confiança,
+presença digital
+e experiência visual diferenciada.
+
+---
+
+![André Tech Preview](./hero-desktop.png)
+
+---
+
+## Conceito
+
+O projeto foi desenvolvido para fugir completamente do visual genérico de:
+- assistências técnicas comuns
+- templates WordPress
+- landing pages SaaS genéricas
+
+A direção visual utiliza:
+- atmosfera escura cinematográfica
+- glow verde técnico
+- motion ambiental
+- profundidade visual
+- composição premium
+- interface inspirada em laboratórios tecnológicos
+
+---
+
+## Stack
+
+- React
+- Vite
+- TypeScript
+- TailwindCSS
+- Framer Motion
+- GSAP
+- Lenis Scroll
+- Lucide Icons
+
+---
+
+## Features
+
+- Hero cinematográfico premium
+- Motion atmosférico
+- Interface responsiva
+- Scroll suave
+- Performance otimizada
+- Estrutura modular
+- CTA integrado com WhatsApp
+- Seções editoriais
+- Layout mobile-first refinado
+- Deploy otimizado para Vercel
+
+---
+
+## Estrutura
+
+```txt
+src/
+ ├── components/
+ ├── sections/
+ ├── lib/
+ ├── styles/
+ └── assets/
+
+public/
+ ├── device.webp
+ └── logo.svg
+```
+
+---
+
+## Rodando localmente
+
+Instale as dependências:
 
 ```bash
 npm install
 ```
 
-## Rodar localmente
+Inicie o ambiente de desenvolvimento:
 
 ```bash
 npm run dev
 ```
 
-No PowerShell, se a política de execução bloquear `npm`, use:
+Caso o PowerShell bloqueie execução:
 
 ```bash
 npm.cmd run dev
 ```
 
-## Hero Temporário Sem Frames
+---
 
-O hero está temporariamente usando uma imagem estática premium em:
+## Hero Cinemático
+
+O hero utiliza atualmente uma imagem premium estática localizada em:
 
 ```txt
 public/device.webp
 ```
 
-Ela é renderizada diretamente no `Hero.tsx`, com motion cinematográfico, parallax sutil, scan line leve, glow verde e camadas de profundidade. Neste modo, o site não depende de:
+O sistema inclui:
+- glow técnico
+- profundidade atmosférica
+- scan line
+- motion sutil
+- iluminação dinâmica
+- composição cinematográfica
 
+Sem necessidade de:
+- vídeos
 - sequência de frames
-- canvas scrub
-- vídeo
+- canvas pesado
 - FFmpeg
-- extração de frames
 
-Para trocar a imagem, substitua `public/device.webp` mantendo o mesmo nome.
+---
 
-## Ajustes Principais
+## Configuração
 
-As constantes editáveis ficam em `src/lib/constants.ts`.
+As principais constantes estão em:
 
-- `WHATSAPP_URL` controla todos os botões de WhatsApp.
-- `FOOTER_LINKS` contém o link do Instagram.
-- `SERVICES`, `PROCESS_STEPS`, `TESTIMONIALS` e `FAQ_ITEMS` controlam o conteúdo das seções.
-- O logo fica em `public/logo.svg`.
+```txt
+src/lib/constants.ts
+```
 
-## Produção
+Controle de:
+- WhatsApp
+- links sociais
+- serviços
+- FAQ
+- testimonials
+- processo operacional
+- CTAs
 
-O projeto é estático e compatível com Vercel. Como o hero agora usa uma imagem única em vez de frame sequence, a publicação fica mais simples e leve. Para melhor resultado visual, mantenha `public/device.webp` otimizado e abaixo de 1.5MB sempre que possível.
+---
+
+## Deploy
+
+Projeto totalmente compatível com:
+
+- Vercel
+- Netlify
+- Cloudflare Pages
+
+Deploy recomendado:
+Vercel.
+
+---
+
+## Filosofia Visual
+
+A experiência foi construída com foco em:
+
+- presença
+- atmosfera
+- direção cinematográfica
+- identidade visual forte
+- composição premium
+- experiência sensorial
+- linguagem visual autoral
+
+O objetivo não era criar:
+“mais uma landing page”.
+
+E sim:
+uma presença digital memorável.
+
+---
+
+## Status
+
+Demo Version — Active Development
+
+---
+
+## Autor
+
+Gustavo Henrique  
+Creative Developer / Interface Systems
+
+GitHub:
+https://github.com/gguga1757-ux
