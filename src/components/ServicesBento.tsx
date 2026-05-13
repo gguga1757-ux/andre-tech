@@ -62,7 +62,7 @@ export function ServicesBento() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
+              viewport={{ once: true, amount: 0.22 }}
               transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
               className="mb-7 flex items-center gap-3 text-xs uppercase tracking-[0.28em] text-primary/80"
             >
@@ -79,7 +79,7 @@ export function ServicesBento() {
             <motion.p
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{
                 delay: 0.32,
                 duration: 0.8,
@@ -137,7 +137,7 @@ export function ServicesBento() {
             <motion.article
               initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, amount: 0.25 }}
+              viewport={{ once: true, amount: 0.16 }}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               className="material-surface cinematic-panel relative mb-12 min-h-[480px] overflow-hidden rounded-lg border-y border-primary/15 px-8 py-10 md:mb-20 md:px-10 md:py-12"
             >
@@ -187,7 +187,7 @@ export function ServicesBento() {
                   key={item.service.title}
                   initial={{ opacity: 0, y: 26, filter: "blur(8px)" }}
                   whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  viewport={{ once: true, amount: 0.28 }}
+                  viewport={{ once: true, amount: 0.18 }}
                   transition={{
                     duration: 0.82,
                     delay: i * 0.06,

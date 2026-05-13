@@ -1,5 +1,6 @@
-import { motion, useInView } from "motion/react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 import { useRef, ElementType } from "react";
+import { useMediaQuery } from "@/lib/useMediaQuery";
 
 type Props = {
   text: string;
@@ -18,10 +19,13 @@ export function BlurText({
 }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const ref = useRef<any>(null);
+  const isMobile = useMediaQuery("(max-width: 767px)");
+  const shouldReduceMotion = useReducedMotion();
 
   const inView = useInView(ref, {
     once: true,
-    amount: 0.3,
+    amount: isMobile ? 0.12 : 0.3,
+    margin: isMobile ? "0px 0px -8% 0px" : "0px",
   });
 
   const words = text.split(" ");
@@ -35,11 +39,13 @@ export function BlurText({
         >
           <motion.span
             className="inline-block"
-            style={{ willChange: "transform, opacity, filter" }}
+            style={{
+              willChange: isMobile ? "transform, opacity" : "transform, opacity, filter",
+            }}
             initial={{
-              opacity: 0,
-              y: 24,
-              filter: "blur(10px)",
+              opacity: shouldReduceMotion ? 1 : 0,
+              y: shouldReduceMotion ? 0 : isMobile ? 12 : 24,
+              filter: isMobile || shouldReduceMotion ? "blur(0px)" : "blur(10px)",
             }}
             animate={
               inView
@@ -53,7 +59,9 @@ export function BlurText({
             transition={{
               duration: 0.9,
               ease: [0.22, 1, 0.36, 1],
-              delay: startDelay + i * delay,
+              delay: shouldReduceMotion
+                ? 0
+                : startDelay + i * (isMobile ? Math.min(delay, 0.035) : delay),
             }}
           >
             {word}

@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { AnimatePresence } from "motion/react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { AmbientExperience } from "@/components/AmbientExperience";
@@ -14,6 +16,7 @@ import { CtaFooter } from "@/components/CtaFooter";
 import { PARTNERS } from "@/lib/constants";
 import { ProductsPage } from "@/components/ProductsPage";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { Preloader } from "@/components/Preloader";
 
 function Partners() {
   return (
@@ -62,13 +65,26 @@ function HomePage() {
 }
 
 export default function App() {
+  const [showPreloader, setShowPreloader] = useState(true);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setShowPreloader(false);
+    }, 2050);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
-    <Router>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/produtos" element={<ProductsPage />} />
-      </Routes>
-    </Router>
+    <>
+      <AnimatePresence>{showPreloader && <Preloader />}</AnimatePresence>
+      <Router>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/produtos" element={<ProductsPage />} />
+        </Routes>
+      </Router>
+    </>
   );
 }

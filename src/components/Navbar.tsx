@@ -34,7 +34,12 @@ export function Navbar() {
     const header = headerRef.current;
     const shell = shellRef.current;
 
-    if (!header || !shell || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const shouldReduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
+    if (!header || !shell || shouldReduceMotion || isMobile) {
       return;
     }
 

@@ -1063,21 +1063,127 @@ a {
 
 @media (max-width: 767px) {
   :root {
-    --gutter: 20px;
+    --gutter: clamp(16px, 5vw, 20px);
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    word-break: normal;
+    overflow-wrap: normal;
+  }
+
+  .premium-site,
+  .premium-site * {
+    min-width: 0;
+  }
+
+  .premium-site {
+    overflow-x: hidden;
+  }
+
+  .premium-site section {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .premium-site [class*="min-h-screen"] {
+    min-height: 100svh !important;
+  }
+
+  .premium-site [class*="overflow-visible"] {
+    overflow: hidden !important;
+  }
+
+  .premium-site > section:not(:first-child) {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .premium-site h1,
+  .premium-site h2,
+  .premium-site h3,
+  .premium-site p,
+  .premium-site a,
+  .premium-site span {
+    max-width: 100%;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+
+  .premium-site h1 {
+    font-size: clamp(2.15rem, 10.5vw, 3rem) !important;
+    line-height: 1.05 !important;
+  }
+
+  .premium-site h2 {
+    font-size: clamp(2rem, 9.2vw, 2.75rem) !important;
+    line-height: 1.07 !important;
+  }
+
+  .premium-site h3 {
+    font-size: clamp(1.55rem, 7vw, 2.1rem) !important;
+    line-height: 1.16 !important;
+  }
+
+  .premium-site p {
+    font-size: clamp(0.94rem, 4vw, 1rem);
+    line-height: 1.65;
+  }
+
+  .premium-site [class*="tracking-[0.2"],
+  .premium-site [class*="tracking-[0.22"],
+  .premium-site [class*="tracking-[0.24"],
+  .premium-site [class*="tracking-[0.28"],
+  .premium-site .micro-hud,
+  .premium-site .technical-label {
+    letter-spacing: 0.12em !important;
+  }
+
+  [data-slot="button"] {
+    min-height: 44px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  header.fixed > div {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+
+  header .material-surface {
+    padding: 0.65rem 0.75rem !important;
+  }
+
+  header .nav-reflection,
+  header .nav-sheen {
+    display: none !important;
   }
 
   .premium-site::before {
-    opacity: 0.32;
+    opacity: 0.16;
+    animation: none;
+    background-size: 220px 220px, 100% 6px;
   }
 
   .premium-site::after {
     background:
       radial-gradient(ellipse at 50% 16%, transparent 42%, rgba(0, 0, 0, 0.28) 86%, rgba(0, 0, 0, 0.48) 100%),
       linear-gradient(90deg, rgba(255, 255, 255, 0.012), transparent 24%, transparent 76%, rgba(45, 255, 20, 0.014));
+    opacity: 0.12;
   }
 
   .ambient-root {
-    opacity: 0.48;
+    opacity: 0.28;
+    mix-blend-mode: normal;
   }
 
   .ambient-grid-layer {
@@ -1085,27 +1191,156 @@ a {
       92px 92px,
       92px 92px,
       24px 24px;
-    opacity: 0.24;
+    opacity: 0.16;
   }
 
-  .ambient-particle:nth-child(n + 22) {
+  .ambient-orb,
+  .ambient-scan,
+  .ambient-depth-line,
+  .ambient-reticle,
+  .ambient-particle:nth-child(n + 14) {
     display: none;
+  }
+
+  .scene-depth {
+    opacity: 0.24;
+    mix-blend-mode: normal;
+  }
+
+  .scene-rail {
+    display: none;
+  }
+
+  .premium-site .tech-grid,
+  .premium-site .calibration-grid {
+    opacity: 0.07 !important;
+  }
+
+  .noise::after {
+    opacity: 0.16;
+    animation: none;
+    background-size: 220px 220px;
   }
 
   .material-surface,
   .liquid-glass,
-  .liquid-glass-strong {
-    backdrop-filter: blur(18px) saturate(118%);
-    -webkit-backdrop-filter: blur(18px) saturate(118%);
+  .liquid-glass-strong,
+  .media-treatment,
+  .photo-slot {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 16px 44px rgba(0, 0, 0, 0.24) !important;
+  }
+
+  .material-surface::after,
+  .liquid-glass::after,
+  .liquid-glass-strong::after {
+    display: none;
+  }
+
+  .cinematic-panel::before {
+    opacity: 0.24;
+  }
+
+  .cinematic-panel::after {
+    opacity: 0.5;
   }
 
   .photo-slot {
-    min-height: 210px;
+    min-height: 180px !important;
+  }
+
+  .media-treatment {
+    min-height: 240px !important;
+  }
+
+  .media-treatment > div {
+    min-height: 210px !important;
+  }
+
+  .premium-site [class*="min-h-[660px]"],
+  .premium-site [class*="min-h-[520px]"] {
+    min-height: 420px !important;
+  }
+
+  .premium-site [class*="min-h-[480px]"],
+  .premium-site [class*="min-h-[440px]"],
+  .premium-site [class*="min-h-[390px]"] {
+    min-height: 320px !important;
+  }
+
+  .premium-site [class*="min-h-[330px]"],
+  .premium-site [class*="min-h-[280px]"],
+  .premium-site [class*="min-h-[260px]"],
+  .premium-site [class*="min-h-[220px]"],
+  .premium-site [class*="min-h-[190px]"] {
+    min-height: 180px !important;
+  }
+
+  .premium-site [class*="blur-[110px]"],
+  .premium-site [class*="blur-[120px]"],
+  .premium-site [class*="blur-[130px]"],
+  .premium-site [class*="blur-[140px]"],
+  .premium-site [class*="blur-[150px]"] {
+    display: none !important;
+  }
+
+  .premium-site [class*="blur-[34px]"],
+  .premium-site [class*="blur-[38px]"],
+  .premium-site [class*="blur-[60px]"],
+  .premium-site [class*="blur-[72px]"] {
+    filter: blur(14px) !important;
+  }
+
+  .premium-site [style*="blur(8px)"],
+  .premium-site [style*="blur(9px)"],
+  .premium-site [style*="blur(10px)"],
+  .premium-site [style*="blur(12px)"] {
+    filter: none !important;
+  }
+
+  .premium-site img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .premium-site img[style*="drop-shadow"],
+  .premium-site [class*="drop-shadow"] {
+    filter: drop-shadow(0 20px 46px rgba(0, 0, 0, 0.56)) !important;
   }
 
   .micro-hud {
     font-size: 0.58rem;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.12em;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .technical-label {
+    font-size: 0.58rem;
+    line-height: 1.3;
+  }
+
+  .photo-slot::after {
+    left: 1rem;
+    bottom: 1rem;
+    max-width: calc(100% - 2rem);
+    font-size: 0.54rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 380px) {
+  .premium-site h1 {
+    font-size: clamp(2rem, 10vw, 2.55rem) !important;
+  }
+
+  [data-slot="button"] {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    font-size: 0.92rem !important;
   }
 }
 

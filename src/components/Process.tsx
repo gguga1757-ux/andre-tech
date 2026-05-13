@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { PROCESS_STEPS } from "@/lib/constants";
 import { BlurText } from "@/components/BlurText";
+import { useMediaQuery } from "@/lib/useMediaQuery";
 
 const technicalLabels = [
   "chegada na loja",
@@ -18,6 +19,7 @@ function ProcessStep({
   index: number;
 }) {
   const itemRef = useRef<HTMLElement>(null);
+  const isMobile = useMediaQuery("(max-width: 767px)");
   const { scrollYProgress } = useScroll({
     target: itemRef,
     offset: ["start 78%", "center 42%"],
@@ -31,10 +33,10 @@ function ProcessStep({
   return (
     <motion.article
       ref={itemRef}
-      style={{ opacity: contentOpacity, y: contentY }}
-      initial={{ filter: "blur(9px)" }}
-      whileInView={{ filter: "blur(0px)" }}
-      viewport={{ once: true, amount: 0.25 }}
+      style={isMobile ? undefined : { opacity: contentOpacity, y: contentY }}
+      initial={isMobile ? false : { filter: "blur(9px)" }}
+      whileInView={isMobile ? { opacity: 1, y: 0 } : { filter: "blur(0px)" }}
+      viewport={{ once: true, amount: isMobile ? 0.12 : 0.25 }}
       transition={{
         duration: 0.9,
         delay: index * 0.06,
@@ -44,13 +46,17 @@ function ProcessStep({
     >
       <motion.div
         style={{ opacity: nodeOpacity, scale: nodeScale }}
-        animate={{
-          boxShadow: [
-            "0 0 20px rgba(45,255,20,.16)",
-            "0 0 38px rgba(45,255,20,.28)",
-            "0 0 20px rgba(45,255,20,.16)",
-          ],
-        }}
+        animate={
+          isMobile
+            ? undefined
+            : {
+                boxShadow: [
+                  "0 0 20px rgba(45,255,20,.16)",
+                  "0 0 38px rgba(45,255,20,.28)",
+                  "0 0 20px rgba(45,255,20,.16)",
+                ],
+              }
+        }
         transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
         className="absolute left-[-23px] top-12 z-20 grid h-[46px] w-[46px] place-items-center rounded-full border border-primary/35 bg-[radial-gradient(circle_at_50%_42%,rgba(45,255,20,.32),rgba(45,255,20,.12)_42%,rgba(3,6,4,.94)_74%)] text-sm font-semibold text-primary md:top-16"
       >
@@ -61,7 +67,7 @@ function ProcessStep({
 
       <div className="material-surface cinematic-panel relative overflow-hidden rounded-lg border-t border-primary/15 px-6 pb-6 pt-8 md:px-8">
         <motion.div
-          style={{ x: scanX }}
+          style={isMobile ? undefined : { x: scanX }}
           className="pointer-events-none absolute top-0 h-px w-44 bg-gradient-to-r from-transparent via-primary/70 to-transparent"
         />
 
@@ -94,6 +100,7 @@ function ProcessStep({
 
 export function Process() {
   const timelineRef = useRef<HTMLDivElement>(null);
+  const isMobile = useMediaQuery("(max-width: 767px)");
   const { scrollYProgress } = useScroll({
     target: timelineRef,
     offset: ["start 72%", "end 45%"],
@@ -116,7 +123,7 @@ export function Process() {
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
+            viewport={{ once: true, amount: 0.22 }}
             transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
             className="mb-5 flex items-center gap-3 text-sm uppercase tracking-[0.28em] text-primary/80"
           >
@@ -132,7 +139,7 @@ export function Process() {
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: 0.32, duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
             className="mt-7 max-w-[640px] text-lg leading-relaxed text-foreground/64"
           >
@@ -144,7 +151,11 @@ export function Process() {
         <div ref={timelineRef} className="relative ml-auto max-w-[940px]">
           <div className="absolute bottom-8 left-0 top-8 z-0 w-px bg-[linear-gradient(180deg,transparent,rgba(45,255,20,.18)_12%,rgba(255,255,255,.09)_48%,rgba(45,255,20,.14)_86%,transparent)]" />
           <motion.div
-            style={{ scaleY: activeLineScale, transformOrigin: "top" }}
+            style={
+              isMobile
+                ? { scaleY: 1, transformOrigin: "top" }
+                : { scaleY: activeLineScale, transformOrigin: "top" }
+            }
             className="absolute bottom-8 left-0 top-8 z-10 w-px bg-[linear-gradient(180deg,transparent,rgba(45,255,20,.88)_10%,rgba(180,255,170,.7)_54%,rgba(45,255,20,.34)_100%)] shadow-[0_0_26px_rgba(45,255,20,.24)]"
           />
           <motion.div

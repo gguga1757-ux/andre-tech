@@ -30,7 +30,7 @@ function ProductEcosystem() {
     <motion.div
       initial={{ opacity: 0, y: 34, filter: "blur(12px)" }}
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once: true, amount: 0.25 }}
+      viewport={{ once: true, amount: 0.16 }}
       transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       className="relative min-h-[520px] overflow-visible lg:min-h-[660px]"
       aria-hidden="true"
@@ -112,7 +112,7 @@ export function Products() {
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
+              viewport={{ once: true, amount: 0.22 }}
               transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
               className="mb-5 flex items-center gap-3 text-sm uppercase tracking-[0.28em] text-primary/80"
             >
@@ -128,7 +128,7 @@ export function Products() {
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: 0.32, duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
               className="mt-7 max-w-[620px] text-lg leading-relaxed text-foreground/64"
             >
@@ -142,7 +142,7 @@ export function Products() {
                   key={item.title}
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.35 }}
+                  viewport={{ once: true, amount: 0.2 }}
                   transition={{
                     delay: 0.42 + i * 0.08,
                     duration: 0.72,

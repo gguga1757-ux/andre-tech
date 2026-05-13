@@ -32,7 +32,7 @@ export function CtaFooter() {
           <motion.div
             initial={{ opacity: 0, y: 26, filter: "blur(8px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.35 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-[690px]"
           >
@@ -67,7 +67,7 @@ export function CtaFooter() {
           <motion.div
             initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.18 }}
             transition={{ delay: 0.12, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="material-surface cinematic-panel relative overflow-hidden rounded-lg border-y border-primary/14 px-7 py-8 md:px-9 md:py-10"
           >

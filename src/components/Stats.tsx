@@ -50,7 +50,7 @@ export function Stats() {
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
+              viewport={{ once: true, amount: 0.22 }}
               transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
               className="mb-5 flex items-center gap-3 text-sm uppercase tracking-[0.28em] text-primary/80"
             >
@@ -61,7 +61,7 @@ export function Stats() {
             <motion.h2
               initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, amount: 0.35 }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               className="font-display text-5xl leading-[0.96] tracking-normal text-foreground sm:text-6xl lg:text-7xl"
             >
@@ -71,7 +71,7 @@ export function Stats() {
             <motion.p
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: 0.22, duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
               className="mt-7 max-w-[620px] text-base leading-relaxed text-foreground/64 md:text-lg"
             >
@@ -83,7 +83,7 @@ export function Stats() {
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: 0.34, duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
               className="mt-10"
             >
@@ -119,7 +119,7 @@ export function Stats() {
           <motion.div
             initial={{ opacity: 0, y: 34, filter: "blur(12px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.25 }}
+            viewport={{ once: true, amount: 0.16 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="material-surface cinematic-panel relative min-h-[520px] overflow-hidden rounded-lg border-y border-primary/14 px-8 py-10 md:px-10 md:py-12"
           >
@@ -152,7 +152,7 @@ export function Stats() {
                     key={item.title}
                     initial={{ opacity: 0, x: 24 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
+                    viewport={{ once: true, amount: 0.24 }}
                     transition={{
                       delay: 0.18 + i * 0.08,
                       duration: 0.72,

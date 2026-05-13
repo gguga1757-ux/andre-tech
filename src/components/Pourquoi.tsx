@@ -23,7 +23,7 @@ export function Pourquoi() {
           <motion.div
             initial={{ opacity: 0, y: 22, filter: "blur(8px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.35 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-[600px]"
           >
@@ -47,7 +47,7 @@ export function Pourquoi() {
           <motion.article
             initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.18 }}
             transition={{ delay: 0.08, duration: 0.92, ease: [0.22, 1, 0.36, 1] }}
             className="material-surface cinematic-panel relative overflow-hidden rounded-lg border-y border-primary/14 px-7 py-9 md:px-9 md:py-11"
           >
@@ -88,7 +88,7 @@ export function Pourquoi() {
           <motion.div
             initial={{ opacity: 0, y: 26, filter: "blur(8px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.35 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
             className="relative border-t border-primary/12 pt-7 md:col-span-5"
           >
@@ -104,7 +104,7 @@ export function Pourquoi() {
           <motion.div
             initial={{ opacity: 0, y: 22, filter: "blur(8px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.35 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: 0.08, duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
             className="relative border-t border-primary/12 pt-7 md:col-span-3 md:col-start-7 md:mt-20"
           >
@@ -130,7 +130,7 @@ export function Pourquoi() {
           <motion.div
             initial={{ opacity: 0, y: 22, filter: "blur(8px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.35 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: 0.16, duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
             className="relative border-y border-primary/12 py-8 md:col-span-4 md:col-start-9"
           >

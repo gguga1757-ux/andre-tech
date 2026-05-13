@@ -16,7 +16,12 @@ export function AmbientExperience() {
   useEffect(() => {
     const root = rootRef.current;
 
-    if (!root || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const shouldReduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
+    if (!root || shouldReduceMotion || isMobile) {
       return;
     }
 
