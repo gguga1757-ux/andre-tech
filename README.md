@@ -17,7 +17,7 @@ e experiência visual diferenciada.
 
 ---
 
-![André Tech Preview](./hero-desktop.png)
+![André Tech Preview](./assets/hero-desktop.png)
 
 ---
 
@@ -193,4 +193,4 @@ Gustavo Henrique
 Creative Developer / Interface Systems
 
 GitHub:
-https://github.com/gguga1757-ux
+https://github.com/gguga1757-uxg
