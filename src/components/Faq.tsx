@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { BlurText } from "@/components/BlurText";
+import { useMobileMotion } from "@/lib/motion";
 
 const trustProtocols = [
   {
@@ -42,6 +43,7 @@ const trustProtocols = [
 export function Faq() {
   const featured = trustProtocols[0];
   const supporting = trustProtocols.slice(1);
+  const mobileMotion = useMobileMotion();
 
   return (
     <section className="noise relative overflow-hidden py-36 md:py-52">
@@ -57,10 +59,10 @@ export function Faq() {
         <div className="grid gap-16 lg:grid-cols-[0.84fr_1.16fr] lg:gap-24">
           <div className="lg:sticky lg:top-28 lg:h-fit">
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.22 }}
-              transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+              initial={mobileMotion.reveal(18)}
+              whileInView={mobileMotion.visible()}
+              viewport={mobileMotion.viewport(0.22)}
+              transition={mobileMotion.transition(0, 0.72)}
               className="mb-5 flex items-center gap-3 text-sm uppercase tracking-[0.28em] text-primary/80"
             >
               <span className="h-px w-12 bg-primary/50" />
@@ -73,10 +75,10 @@ export function Faq() {
             />
 
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ delay: 0.32, duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
+              initial={mobileMotion.reveal(16)}
+              whileInView={mobileMotion.visible()}
+              viewport={mobileMotion.viewport(0.2)}
+              transition={mobileMotion.transition(0.32, 0.78)}
               className="mt-7 max-w-[560px] text-lg leading-relaxed text-foreground/62"
             >
               A experiência André Tech começa antes do reparo: leitura técnica,
@@ -103,10 +105,10 @@ export function Faq() {
             </div>
 
             <motion.article
-              initial={{ opacity: 0, y: 32, filter: "blur(10px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, amount: 0.18 }}
-              transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
+              initial={mobileMotion.reveal(32, 10)}
+              whileInView={mobileMotion.visible(true)}
+              viewport={mobileMotion.viewport(0.18)}
+              transition={mobileMotion.transition(0, 0.95)}
               className="material-surface cinematic-panel relative overflow-hidden rounded-lg border-y border-primary/14 px-7 py-12 md:px-10 md:py-16"
             >
               <div className="absolute inset-0 bg-[linear-gradient(112deg,rgba(255,255,255,.045),transparent_44%,rgba(45,255,20,.035))]" />
@@ -142,14 +144,10 @@ export function Faq() {
               {supporting.map((item, i) => (
                 <motion.article
                   key={item.code}
-                  initial={{ opacity: 0, y: 26, filter: "blur(8px)" }}
-                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{
-                    delay: 0.1 + i * 0.08,
-                    duration: 0.82,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
+                  initial={mobileMotion.reveal(26, 8)}
+                  whileInView={mobileMotion.visible(true)}
+                  viewport={mobileMotion.viewport(0.2)}
+                  transition={mobileMotion.transition(0.1 + i * 0.08, 0.82)}
                   className={
                     i === 1
                       ? "relative border-t border-primary/12 pt-7 md:mt-20"

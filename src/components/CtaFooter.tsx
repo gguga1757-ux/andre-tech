@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowUpRight, MapPin, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useMobileMotion } from "@/lib/motion";
 import {
   BRAND_NAME,
   FOOTER_LINKS,
@@ -19,6 +20,8 @@ const contactSignals = [
 ];
 
 export function CtaFooter() {
+  const mobileMotion = useMobileMotion();
+
   return (
     <section id="contato" className="noise relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_74%_22%,rgba(45,255,20,.07),transparent_32%),radial-gradient(ellipse_at_18%_80%,rgba(255,255,255,.035),transparent_26%),linear-gradient(180deg,var(--bg),rgba(6,16,9,.95)_52%,var(--bg))]" />
@@ -30,10 +33,10 @@ export function CtaFooter() {
       <div className="relative z-10 mx-auto max-w-[var(--max)] px-[var(--gutter)] py-28 md:py-36">
         <div className="grid items-end gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-24">
           <motion.div
-            initial={{ opacity: 0, y: 26, filter: "blur(8px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            initial={mobileMotion.reveal(26, 8)}
+            whileInView={mobileMotion.visible(true)}
+            viewport={mobileMotion.viewport(0.2)}
+            transition={mobileMotion.transition(0, 0.9)}
             className="max-w-[690px]"
           >
             <div className="mb-6 flex items-center gap-3 text-sm uppercase tracking-[0.28em] text-primary/75">
@@ -65,10 +68,10 @@ export function CtaFooter() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.18 }}
-            transition={{ delay: 0.12, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            initial={mobileMotion.reveal(28, 10)}
+            whileInView={mobileMotion.visible(true)}
+            viewport={mobileMotion.viewport(0.18)}
+            transition={mobileMotion.transition(0.12, 0.9)}
             className="material-surface cinematic-panel relative overflow-hidden rounded-lg border-y border-primary/14 px-7 py-8 md:px-9 md:py-10"
           >
             <div className="absolute inset-0 bg-[linear-gradient(112deg,rgba(255,255,255,.04),transparent_46%,rgba(45,255,20,.035))]" />

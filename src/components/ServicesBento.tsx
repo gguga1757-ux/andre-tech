@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { BlurText } from "@/components/BlurText";
 import { SERVICES, STORE_ADDRESS, STORE_CITY } from "@/lib/constants";
+import { useMobileMotion } from "@/lib/motion";
 
 const DEVICE_IMAGE = "/device-cutout.png";
 
@@ -45,6 +46,7 @@ const serviceScenes = [
 
 export function ServicesBento() {
   const diagnostic = SERVICES[3];
+  const mobileMotion = useMobileMotion();
 
   return (
     <section id="servicos" className="relative overflow-hidden py-28 md:py-40">
@@ -60,10 +62,10 @@ export function ServicesBento() {
         <div className="grid gap-14 lg:grid-cols-[0.88fr_1.12fr] lg:items-start xl:gap-24">
           <div className="lg:sticky lg:top-28">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.22 }}
-              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+              initial={mobileMotion.reveal(20)}
+              whileInView={mobileMotion.visible()}
+              viewport={mobileMotion.viewport(0.22)}
+              transition={mobileMotion.transition(0, 0.75)}
               className="mb-7 flex items-center gap-3 text-xs uppercase tracking-[0.28em] text-primary/80"
             >
               <span className="h-px w-12 bg-primary/50" />
@@ -77,14 +79,10 @@ export function ServicesBento() {
             />
 
             <motion.p
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                delay: 0.32,
-                duration: 0.8,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+              initial={mobileMotion.reveal(18)}
+              whileInView={mobileMotion.visible()}
+              viewport={mobileMotion.viewport(0.2)}
+              transition={mobileMotion.transition(0.32, 0.8)}
               className="mt-8 max-w-[560px] text-base leading-relaxed text-foreground/64 md:text-lg"
             >
               A André Tech recebe problemas reais: tela quebrada, bateria
@@ -135,10 +133,10 @@ export function ServicesBento() {
             <div className="absolute -left-[3.2rem] top-[18%] hidden h-2 w-2 rounded-full bg-primary shadow-[0_0_24px_rgba(45,255,20,.52)] lg:block" />
 
             <motion.article
-              initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, amount: 0.16 }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              initial={mobileMotion.reveal(28, 10)}
+              whileInView={mobileMotion.visible(true)}
+              viewport={mobileMotion.viewport(0.16)}
+              transition={mobileMotion.transition(0, 0.9)}
               className="material-surface cinematic-panel relative mb-12 min-h-[480px] overflow-hidden rounded-lg border-y border-primary/15 px-8 py-10 md:mb-20 md:px-10 md:py-12"
             >
               <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(255,255,255,.04),transparent_36%,rgba(45,255,20,.04)_100%)]" />
@@ -185,14 +183,10 @@ export function ServicesBento() {
               {serviceScenes.map((item, i) => (
                 <motion.article
                   key={item.service.title}
-                  initial={{ opacity: 0, y: 26, filter: "blur(8px)" }}
-                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  viewport={{ once: true, amount: 0.18 }}
-                  transition={{
-                    duration: 0.82,
-                    delay: i * 0.06,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
+                  initial={mobileMotion.reveal(26, 8)}
+                  whileInView={mobileMotion.visible(true)}
+                  viewport={mobileMotion.viewport(0.18)}
+                  transition={mobileMotion.transition(i * 0.06, 0.82)}
                   className={`group relative border-t border-primary/15 pt-8 ${item.className}`}
                 >
                   <div className="absolute left-0 top-0 h-px w-24 bg-primary/50 transition-all duration-500 group-hover:w-36" />

@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { BlurText } from "@/components/BlurText";
+import { useMobileMotion } from "@/lib/motion";
 
 const operatingSequence = [
   "receber",
@@ -10,6 +11,8 @@ const operatingSequence = [
 ];
 
 export function Pourquoi() {
+  const mobileMotion = useMobileMotion();
+
   return (
     <section id="diferenciais" className="noise relative overflow-hidden py-32 md:py-44">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_78%_18%,rgba(45,255,20,.07),transparent_32%),radial-gradient(ellipse_at_12%_76%,rgba(255,255,255,.035),transparent_28%),linear-gradient(180deg,var(--bg),rgba(6,16,9,.94)_48%,var(--bg))]" />
@@ -21,10 +24,10 @@ export function Pourquoi() {
       <div className="relative z-10 mx-auto max-w-[var(--max)] px-[var(--gutter)]">
         <div className="grid gap-14 lg:grid-cols-[0.7fr_1.3fr] lg:items-end lg:gap-24">
           <motion.div
-            initial={{ opacity: 0, y: 22, filter: "blur(8px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
+            initial={mobileMotion.reveal(22, 8)}
+            whileInView={mobileMotion.visible(true)}
+            viewport={mobileMotion.viewport(0.2)}
+            transition={mobileMotion.transition(0, 0.82)}
             className="max-w-[600px]"
           >
             <div className="mb-5 flex items-center gap-3 text-sm uppercase tracking-[0.28em] text-primary/75">
@@ -45,10 +48,10 @@ export function Pourquoi() {
           </motion.div>
 
           <motion.article
-            initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.18 }}
-            transition={{ delay: 0.08, duration: 0.92, ease: [0.22, 1, 0.36, 1] }}
+            initial={mobileMotion.reveal(28, 10)}
+            whileInView={mobileMotion.visible(true)}
+            viewport={mobileMotion.viewport(0.18)}
+            transition={mobileMotion.transition(0.08, 0.92)}
             className="material-surface cinematic-panel relative overflow-hidden rounded-lg border-y border-primary/14 px-7 py-9 md:px-9 md:py-11"
           >
             <div className="absolute inset-0 bg-[linear-gradient(112deg,rgba(255,255,255,.035),transparent_46%,rgba(45,255,20,.03))]" />
@@ -86,10 +89,10 @@ export function Pourquoi() {
 
         <div className="mt-20 grid gap-y-14 md:grid-cols-12 md:gap-x-8 lg:mt-24">
           <motion.div
-            initial={{ opacity: 0, y: 26, filter: "blur(8px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
+            initial={mobileMotion.reveal(26, 8)}
+            whileInView={mobileMotion.visible(true)}
+            viewport={mobileMotion.viewport(0.2)}
+            transition={mobileMotion.transition(0, 0.82)}
             className="relative border-t border-primary/12 pt-7 md:col-span-5"
           >
             <div className="absolute left-0 top-0 h-px w-28 bg-primary/40" />
@@ -102,10 +105,10 @@ export function Pourquoi() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 22, filter: "blur(8px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ delay: 0.08, duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
+            initial={mobileMotion.reveal(22, 8)}
+            whileInView={mobileMotion.visible(true)}
+            viewport={mobileMotion.viewport(0.2)}
+            transition={mobileMotion.transition(0.08, 0.82)}
             className="relative border-t border-primary/12 pt-7 md:col-span-3 md:col-start-7 md:mt-20"
           >
             <div className="absolute left-0 top-0 h-px w-20 bg-primary/36" />
@@ -128,10 +131,10 @@ export function Pourquoi() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 22, filter: "blur(8px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ delay: 0.16, duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
+            initial={mobileMotion.reveal(22, 8)}
+            whileInView={mobileMotion.visible(true)}
+            viewport={mobileMotion.viewport(0.2)}
+            transition={mobileMotion.transition(0.16, 0.82)}
             className="relative border-y border-primary/12 py-8 md:col-span-4 md:col-start-9"
           >
             <div className="absolute left-0 top-0 h-20 w-px bg-primary/28" />

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useMediaQuery } from "@/lib/useMediaQuery";
 
 const particles = Array.from({ length: 46 }, (_, i) => ({
   id: i,
@@ -12,6 +13,7 @@ const particles = Array.from({ length: 46 }, (_, i) => ({
 
 export function AmbientExperience() {
   const rootRef = useRef<HTMLDivElement>(null);
+  const isMobileViewport = useMediaQuery("(max-width: 767px)");
 
   useEffect(() => {
     const root = rootRef.current;
@@ -128,7 +130,7 @@ export function AmbientExperience() {
       <div className="ambient-reticle ambient-reticle-a" />
       <div className="ambient-reticle ambient-reticle-b" />
       <div className="ambient-particles">
-        {particles.map((particle) => (
+        {(isMobileViewport ? [] : particles).map((particle) => (
           <span
             key={particle.id}
             className="ambient-particle"

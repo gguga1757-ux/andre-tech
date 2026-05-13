@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { PROCESS_STEPS } from "@/lib/constants";
 import { BlurText } from "@/components/BlurText";
-import { useMediaQuery } from "@/lib/useMediaQuery";
+import { useMobileMotion } from "@/lib/motion";
 
 const technicalLabels = [
   "chegada na loja",
@@ -19,7 +19,8 @@ function ProcessStep({
   index: number;
 }) {
   const itemRef = useRef<HTMLElement>(null);
-  const isMobile = useMediaQuery("(max-width: 767px)");
+  const mobileMotion = useMobileMotion();
+  const isMobile = mobileMotion.isMobile;
   const { scrollYProgress } = useScroll({
     target: itemRef,
     offset: ["start 78%", "center 42%"],
@@ -36,11 +37,11 @@ function ProcessStep({
       style={isMobile ? undefined : { opacity: contentOpacity, y: contentY }}
       initial={isMobile ? false : { filter: "blur(9px)" }}
       whileInView={isMobile ? { opacity: 1, y: 0 } : { filter: "blur(0px)" }}
-      viewport={{ once: true, amount: isMobile ? 0.12 : 0.25 }}
+      viewport={mobileMotion.viewport(isMobile ? 0.12 : 0.25)}
       transition={{
-        duration: 0.9,
-        delay: index * 0.06,
-        ease: [0.22, 1, 0.36, 1],
+        duration: isMobile ? 0.34 : 0.9,
+        delay: isMobile ? 0 : index * 0.06,
+        ease: mobileMotion.ease,
       }}
       className="group relative py-12 pl-16 md:py-16 md:pl-24"
     >
@@ -100,7 +101,8 @@ function ProcessStep({
 
 export function Process() {
   const timelineRef = useRef<HTMLDivElement>(null);
-  const isMobile = useMediaQuery("(max-width: 767px)");
+  const mobileMotion = useMobileMotion();
+  const isMobile = mobileMotion.isMobile;
   const { scrollYProgress } = useScroll({
     target: timelineRef,
     offset: ["start 72%", "end 45%"],
@@ -121,10 +123,10 @@ export function Process() {
       <div className="relative z-10 mx-auto max-w-[var(--max)] px-[var(--gutter)]">
         <div className="mb-16 max-w-[760px] md:mb-20">
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.22 }}
-            transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+            initial={mobileMotion.reveal(18)}
+            whileInView={mobileMotion.visible()}
+            viewport={mobileMotion.viewport(0.22)}
+            transition={mobileMotion.transition(0, 0.72)}
             className="mb-5 flex items-center gap-3 text-sm uppercase tracking-[0.28em] text-primary/80"
           >
             <span className="h-px w-12 bg-primary/50" />
@@ -137,10 +139,10 @@ export function Process() {
           />
 
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ delay: 0.32, duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
+            initial={mobileMotion.reveal(16)}
+            whileInView={mobileMotion.visible()}
+            viewport={mobileMotion.viewport(0.2)}
+            transition={mobileMotion.transition(0.32, 0.78)}
             className="mt-7 max-w-[640px] text-lg leading-relaxed text-foreground/64"
           >
             Do primeiro contato até a entrega, cada etapa existe para o cliente
@@ -159,7 +161,7 @@ export function Process() {
             className="absolute bottom-8 left-0 top-8 z-10 w-px bg-[linear-gradient(180deg,transparent,rgba(45,255,20,.88)_10%,rgba(180,255,170,.7)_54%,rgba(45,255,20,.34)_100%)] shadow-[0_0_26px_rgba(45,255,20,.24)]"
           />
           <motion.div
-            animate={{ opacity: [0.2, 0.42, 0.2] }}
+            animate={isMobile ? undefined : { opacity: [0.2, 0.42, 0.2] }}
             transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
             className="absolute bottom-8 left-[-14px] top-8 z-0 w-7 bg-[linear-gradient(90deg,transparent,rgba(45,255,20,.11),transparent)] blur-md"
           />

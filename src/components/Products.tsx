@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { BlurText } from "@/components/BlurText";
 import { WHATSAPP_URL } from "@/lib/constants";
 import { Link } from "react-router-dom";
+import { useMobileMotion } from "@/lib/motion";
 
 const DEVICE_IMAGE = "/device-cutout.png";
 
@@ -26,12 +27,14 @@ const productLayers = [
 ];
 
 function ProductEcosystem() {
+  const mobileMotion = useMobileMotion();
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 34, filter: "blur(12px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once: true, amount: 0.16 }}
-      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      initial={mobileMotion.reveal(34, 12)}
+      whileInView={mobileMotion.visible(true)}
+      viewport={mobileMotion.viewport(0.16)}
+      transition={mobileMotion.transition(0, 1)}
       className="relative min-h-[520px] overflow-visible lg:min-h-[660px]"
       aria-hidden="true"
     >
@@ -40,7 +43,11 @@ function ProductEcosystem() {
       <div className="absolute right-[-10%] top-[18%] h-[24rem] w-[24rem] rounded-full bg-white/[0.035] blur-[110px]" />
 
       <motion.div
-        animate={{ opacity: [0.18, 0.36, 0.18], scaleX: [0.96, 1.04, 0.96] }}
+        animate={
+          mobileMotion.fastPath
+            ? undefined
+            : { opacity: [0.18, 0.36, 0.18], scaleX: [0.96, 1.04, 0.96] }
+        }
         transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }}
         className="absolute left-[12%] right-[4%] top-[44%] h-px bg-gradient-to-r from-transparent via-primary/45 to-transparent"
       />
@@ -49,7 +56,11 @@ function ProductEcosystem() {
       <div className="absolute left-[34%] bottom-[22%] h-1 w-1 rounded-full bg-primary/45" />
 
       <motion.div
-        animate={{ y: [0, -10, 0], rotate: [-6, -4, -6] }}
+        animate={
+          mobileMotion.fastPath
+            ? undefined
+            : { y: [0, -10, 0], rotate: [-6, -4, -6] }
+        }
         transition={{ duration: 8.6, repeat: Infinity, ease: "easeInOut" }}
         className="absolute left-[3%] top-[12%] h-44 w-52 opacity-80 md:left-[4%] md:top-[14%]"
       >
@@ -59,7 +70,11 @@ function ProductEcosystem() {
       </motion.div>
 
       <motion.div
-        animate={{ y: [0, 12, 0], rotate: [8, 11, 8] }}
+        animate={
+          mobileMotion.fastPath
+            ? undefined
+            : { y: [0, 12, 0], rotate: [8, 11, 8] }
+        }
         transition={{ duration: 9.2, repeat: Infinity, ease: "easeInOut" }}
         className="absolute right-[2%] top-[16%] h-44 w-32 opacity-[0.88] md:right-[8%] md:top-[12%]"
       >
@@ -71,7 +86,11 @@ function ProductEcosystem() {
       </motion.div>
 
       <motion.div
-        animate={{ y: [0, -18, 0], rotateZ: [-4, -2, -4], rotateY: [0, -4, 0] }}
+        animate={
+          mobileMotion.fastPath
+            ? undefined
+            : { y: [0, -18, 0], rotateZ: [-4, -2, -4], rotateY: [0, -4, 0] }
+        }
         transition={{ duration: 9.8, repeat: Infinity, ease: "easeInOut" }}
         className="absolute bottom-[-4%] left-1/2 z-20 w-[min(360px,70vw)] -translate-x-1/2 md:bottom-[-2%] lg:w-[420px]"
       >
@@ -87,7 +106,11 @@ function ProductEcosystem() {
       </motion.div>
 
       <motion.div
-        animate={{ y: [0, 8, 0], opacity: [0.38, 0.62, 0.38] }}
+        animate={
+          mobileMotion.fastPath
+            ? undefined
+            : { y: [0, 8, 0], opacity: [0.38, 0.62, 0.38] }
+        }
         transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut" }}
         className="absolute bottom-[25%] left-[14%] h-24 w-24 rounded-full border border-primary/16 bg-[radial-gradient(circle,rgba(45,255,20,.13),transparent_64%)] blur-[0.2px]"
       />
@@ -98,6 +121,8 @@ function ProductEcosystem() {
 }
 
 export function Products() {
+  const mobileMotion = useMobileMotion();
+
   return (
     <section id="produtos" className="relative overflow-hidden py-40 md:py-52">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_78%_25%,rgba(45,255,20,.09),transparent_34%),radial-gradient(ellipse_at_18%_68%,rgba(255,255,255,.045),transparent_28%),linear-gradient(180deg,var(--bg),rgba(6,16,9,.94)_48%,var(--bg))]" />
@@ -110,10 +135,10 @@ export function Products() {
         <div className="grid items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
           <div className="relative z-10 max-w-[760px]">
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.22 }}
-              transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+              initial={mobileMotion.reveal(18)}
+              whileInView={mobileMotion.visible()}
+              viewport={mobileMotion.viewport(0.22)}
+              transition={mobileMotion.transition(0, 0.72)}
               className="mb-5 flex items-center gap-3 text-sm uppercase tracking-[0.28em] text-primary/80"
             >
               <span className="h-px w-12 bg-primary/50" />
@@ -126,10 +151,10 @@ export function Products() {
             />
 
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ delay: 0.32, duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
+              initial={mobileMotion.reveal(16)}
+              whileInView={mobileMotion.visible()}
+              viewport={mobileMotion.viewport(0.2)}
+              transition={mobileMotion.transition(0.32, 0.78)}
               className="mt-7 max-w-[620px] text-lg leading-relaxed text-foreground/64"
             >
               Aparelhos, acessórios e tecnologia escolhidos na loja para quem
@@ -140,14 +165,10 @@ export function Products() {
               {productLayers.map((item, i) => (
                 <motion.div
                   key={item.title}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{
-                    delay: 0.42 + i * 0.08,
-                    duration: 0.72,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
+                  initial={mobileMotion.reveal(18)}
+                  whileInView={mobileMotion.visible()}
+                  viewport={mobileMotion.viewport(0.2)}
+                  transition={mobileMotion.transition(0.42 + i * 0.08, 0.72)}
                   className="grid gap-4 border-b border-primary/10 py-6 last:border-b-0 sm:grid-cols-[72px_1fr]"
                 >
                   <div className="font-display text-4xl leading-none text-primary/70">

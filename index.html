@@ -13,7 +13,75 @@
     />
 
     <meta name="theme-color" content="#030507" />
-    <link rel="preload" as="image" href="/device-cutout.png" />
+    <link rel="preload" as="image" href="/logo.svg" fetchpriority="high" />
+    <link rel="preload" as="image" href="/device-cutout.png" fetchpriority="high" />
+    <style>
+      :root {
+        --bg: #030604;
+      }
+
+      html,
+      body,
+      #root {
+        min-height: 100%;
+        background:
+          radial-gradient(ellipse at 50% -10%, rgba(45, 255, 20, 0.055), transparent 38%),
+          radial-gradient(ellipse at 12% 24%, rgba(255, 255, 255, 0.028), transparent 34%),
+          radial-gradient(ellipse at 88% 80%, rgba(45, 255, 20, 0.035), transparent 45%),
+          linear-gradient(180deg, #020403 0%, var(--bg) 28%, #040805 100%);
+        color: #f5f7fa;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        overflow-x: hidden;
+      }
+
+      .boot-preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: grid;
+        min-height: 100svh;
+        place-items: center;
+        overflow: hidden;
+        background:
+          radial-gradient(ellipse at 50% 34%, rgba(45, 255, 20, 0.105), transparent 36%),
+          radial-gradient(ellipse at 16% 18%, rgba(255, 255, 255, 0.035), transparent 28%),
+          linear-gradient(180deg, #020806 0%, #030604 55%, #010302 100%);
+      }
+
+      .boot-preloader::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.35;
+        mix-blend-mode: soft-light;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+        background-size: 100% 4px;
+      }
+
+      .boot-preloader__mark {
+        position: relative;
+        display: grid;
+        width: 6rem;
+        height: 6rem;
+        place-items: center;
+        border: 1px solid rgba(45, 255, 20, 0.15);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.025);
+        box-shadow:
+          0 0 46px rgba(45, 255, 20, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      }
+
+      .boot-preloader__mark img {
+        width: 3.5rem;
+        height: 3.5rem;
+        display: block;
+      }
+    </style>
 
     <meta property="og:title" content="André Tech — Assistência Técnica em Medianeira" />
     <meta
@@ -23,7 +91,13 @@
     <meta property="og:type" content="website" />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="boot-preloader" aria-hidden="true">
+        <div class="boot-preloader__mark">
+          <img src="/logo.svg" alt="" decoding="sync" />
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

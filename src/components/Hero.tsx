@@ -3,6 +3,7 @@ import { ArrowDownRight, MapPin, MessageCircle, Store, Wrench } from "lucide-rea
 import { Button } from "@/components/ui/button";
 import { BlurText } from "@/components/BlurText";
 import { useMediaQuery } from "@/lib/useMediaQuery";
+import { useMobileMotion } from "@/lib/motion";
 import {
   BRAND_TAGLINE,
   HERO_HEADLINE,
@@ -142,6 +143,8 @@ function PremiumDevice() {
               filter:
                 "drop-shadow(0 30px 82px rgba(0, 0, 0, 0.78)) drop-shadow(0 0 20px rgba(45, 255, 20, 0.15)) drop-shadow(-4px 0 12px rgba(45, 255, 20, 0.06))",
             }}
+            loading="eager"
+            decoding="async"
             draggable={false}
           />
 
@@ -200,6 +203,8 @@ function PremiumDevice() {
 }
 
 export function Hero() {
+  const mobileMotion = useMobileMotion();
+
   return (
     <section className="relative min-h-[100svh] overflow-hidden noise md:min-h-[92vh]">
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_68%_42%,rgba(45,255,20,.16),transparent_30%),radial-gradient(circle_at_88%_12%,rgba(255,255,255,.07),transparent_26%),radial-gradient(circle_at_25%_75%,rgba(45,255,20,.08),transparent_35%),linear-gradient(135deg,var(--bg),var(--bg-2)_54%,var(--bg-3))]" />
@@ -233,12 +238,9 @@ export function Hero() {
       <div className="relative z-10 flex min-h-[100svh] items-center md:min-h-[92vh]">
         <div className="mx-auto w-full max-w-[var(--max)] px-[var(--gutter)] pb-12 pt-24 sm:pb-16 sm:pt-32 md:pb-20">
           <motion.div
-            initial={{ opacity: 0, y: 34 }}
+            initial={mobileMotion.reveal(34)}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 1.05,
-              ease: [0.22, 1, 0.36, 1],
-            }}
+            transition={mobileMotion.transition(0, 1.05)}
             className="max-w-[790px]"
           >
             <div className="mb-6 inline-flex items-center gap-2 liquid-glass rounded-full px-4 py-2 text-sm text-foreground/76">
@@ -253,26 +255,18 @@ export function Hero() {
             />
 
             <motion.p
-              initial={{ opacity: 0, y: 18 }}
+              initial={mobileMotion.reveal(18)}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.4,
-                duration: 0.85,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+              transition={mobileMotion.transition(0.4, 0.85)}
               className="mt-7 max-w-[650px] text-base leading-relaxed text-foreground/72 md:text-lg"
             >
               {HERO_SUB}
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
+              initial={mobileMotion.reveal(18)}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.58,
-                duration: 0.85,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+              transition={mobileMotion.transition(0.58, 0.85)}
               className="mt-9 flex flex-wrap gap-3 sm:gap-4"
             >
               <Button variant="hero" asChild className="w-full sm:w-auto">
@@ -291,13 +285,9 @@ export function Hero() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={mobileMotion.reveal(16)}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.74,
-                duration: 0.82,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+              transition={mobileMotion.transition(0.74, 0.82)}
               className="mt-8 grid max-w-[760px] gap-3 sm:mt-11 sm:grid-cols-3"
             >
               {localSignals.map((item) => {

@@ -1,20 +1,26 @@
 import { motion, useReducedMotion } from "motion/react";
 import { BRAND_NAME, LOGO_PATH } from "@/lib/constants";
+import { useMediaQuery } from "@/lib/useMediaQuery";
 
 export function Preloader() {
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useMediaQuery("(max-width: 767px)");
+  const simplifiedMotion = prefersReducedMotion || isMobile;
 
   return (
     <motion.div
-      className="fixed inset-0 z-[100] flex min-h-[100svh] w-full items-center justify-center overflow-hidden bg-[#020806] px-6 text-foreground"
-      initial={{ opacity: 0 }}
+      className="fixed inset-0 z-[9999] flex min-h-[100svh] w-full items-center justify-center overflow-hidden bg-[#020806] px-6 text-foreground"
+      initial={false}
       animate={{ opacity: 1 }}
       exit={{
         opacity: 0,
-        filter: "blur(10px)",
-        transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+        filter: simplifiedMotion ? "blur(0px)" : "blur(6px)",
+        transition: {
+          duration: simplifiedMotion ? 0.28 : 0.46,
+          ease: [0.22, 1, 0.36, 1],
+        },
       }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.01, ease: [0.22, 1, 0.36, 1] }}
       role="status"
       aria-live="polite"
       aria-label="Inicializando sistema"
@@ -25,14 +31,18 @@ export function Preloader() {
 
       <motion.div
         className="relative flex w-full max-w-[17rem] flex-col items-center"
-        initial={{ y: 14, scale: 0.98, opacity: 0, filter: "blur(8px)" }}
+        initial={
+          simplifiedMotion
+            ? { y: 0, scale: 1, opacity: 1, filter: "blur(0px)" }
+            : { y: 10, scale: 0.985, opacity: 0.88, filter: "blur(2px)" }
+        }
         animate={{ y: 0, scale: 1, opacity: 1, filter: "blur(0px)" }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: simplifiedMotion ? 0.01 : 0.45, ease: [0.22, 1, 0.36, 1] }}
       >
         <motion.div
-          className="relative grid h-24 w-24 place-items-center rounded-full border border-primary/15 bg-white/[0.025] shadow-[0_0_46px_rgba(45,255,20,0.12),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl sm:h-28 sm:w-28"
+          className="relative grid h-24 w-24 place-items-center rounded-full border border-primary/15 bg-white/[0.025] shadow-[0_0_46px_rgba(45,255,20,0.12),inset_0_1px_0_rgba(255,255,255,0.12)] sm:h-28 sm:w-28 sm:backdrop-blur-xl"
           animate={
-            prefersReducedMotion
+            simplifiedMotion
               ? undefined
               : {
                   scale: [1, 1.025, 1],
@@ -50,14 +60,20 @@ export function Preloader() {
             src={LOGO_PATH}
             alt={BRAND_NAME}
             className="relative h-14 w-14 sm:h-16 sm:w-16"
+            loading="eager"
+            decoding="sync"
           />
         </motion.div>
 
         <motion.p
           className="mt-7 text-center font-body text-[0.68rem] font-medium uppercase leading-none tracking-[0.18em] text-foreground/58"
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: simplifiedMotion ? 1 : 0.88, y: simplifiedMotion ? 0 : 4 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
+          transition={{
+            duration: simplifiedMotion ? 0.01 : 0.36,
+            delay: simplifiedMotion ? 0 : 0.12,
+            ease: [0.22, 1, 0.36, 1],
+          }}
         >
           Inicializando sistema...
         </motion.p>

@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Camera, Cpu, Store } from "lucide-react";
 import { STORE_ADDRESS, STORE_CITY } from "@/lib/constants";
+import { useMobileMotion } from "@/lib/motion";
 
 const mediaScenes = [
   {
@@ -27,6 +28,8 @@ const mediaScenes = [
 ];
 
 export function LabMedia() {
+  const mobileMotion = useMobileMotion();
+
   return (
     <section className="noise relative overflow-hidden py-28 md:py-40">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_68%_22%,rgba(45,255,20,.075),transparent_34%),radial-gradient(ellipse_at_16%_72%,rgba(255,229,196,.035),transparent_28%),linear-gradient(180deg,var(--bg),rgba(8,14,10,.96)_48%,var(--bg))]" />
@@ -38,10 +41,10 @@ export function LabMedia() {
       <div className="relative z-10 mx-auto max-w-[var(--max)] px-[var(--gutter)]">
         <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-20">
           <motion.div
-            initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+            initial={mobileMotion.reveal(24, 8)}
+            whileInView={mobileMotion.visible(true)}
+            viewport={mobileMotion.viewport(0.2)}
+            transition={mobileMotion.transition(0, 0.85)}
             className="max-w-[620px]"
           >
             <div className="mb-5 flex items-center gap-3 text-sm uppercase tracking-[0.28em] text-primary/78">
@@ -80,14 +83,10 @@ export function LabMedia() {
               return (
                 <motion.article
                   key={scene.code}
-                  initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  viewport={{ once: true, amount: 0.18 }}
-                  transition={{
-                    duration: 0.88,
-                    delay: index * 0.08,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
+                  initial={mobileMotion.reveal(28, 10)}
+                  whileInView={mobileMotion.visible(true)}
+                  viewport={mobileMotion.viewport(0.18)}
+                  transition={mobileMotion.transition(index * 0.08, 0.88)}
                   className={`media-treatment min-h-[330px] px-6 py-6 ${scene.className}`}
                 >
                   <div className="relative z-10 flex h-full min-h-[280px] flex-col justify-between">

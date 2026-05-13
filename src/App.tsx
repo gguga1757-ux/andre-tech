@@ -77,14 +77,23 @@ export default function App() {
 
   return (
     <>
-      <AnimatePresence>{showPreloader && <Preloader />}</AnimatePresence>
-      <Router>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/produtos" element={<ProductsPage />} />
-        </Routes>
-      </Router>
+      <AnimatePresence initial={false}>
+        {showPreloader && <Preloader />}
+      </AnimatePresence>
+      <div
+        className={`site-shell ${
+          showPreloader ? "site-shell--preloading" : "site-shell--ready"
+        }`}
+        aria-hidden={showPreloader}
+      >
+        <Router>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/produtos" element={<ProductsPage />} />
+          </Routes>
+        </Router>
+      </div>
     </>
   );
 }

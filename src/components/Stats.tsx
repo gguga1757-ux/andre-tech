@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useMobileMotion } from "@/lib/motion";
 import {
   STORE_ADDRESS,
   STORE_CITY,
@@ -34,6 +35,8 @@ const systemLabels = [
 ];
 
 export function Stats() {
+  const mobileMotion = useMobileMotion();
+
   return (
     <section className="noise relative overflow-hidden py-28 md:py-40">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_72%_28%,rgba(45,255,20,.09),transparent_34%),radial-gradient(ellipse_at_18%_70%,rgba(255,255,255,.04),transparent_28%),linear-gradient(180deg,var(--bg),rgba(6,16,9,.96)_48%,var(--bg))]" />
@@ -48,10 +51,10 @@ export function Stats() {
         <div className="grid items-center gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-24">
           <div className="max-w-[720px]">
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.22 }}
-              transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+              initial={mobileMotion.reveal(18)}
+              whileInView={mobileMotion.visible()}
+              viewport={mobileMotion.viewport(0.22)}
+              transition={mobileMotion.transition(0, 0.72)}
               className="mb-5 flex items-center gap-3 text-sm uppercase tracking-[0.28em] text-primary/80"
             >
               <span className="h-px w-12 bg-primary/50" />
@@ -59,20 +62,20 @@ export function Stats() {
             </motion.div>
 
             <motion.h2
-              initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              initial={mobileMotion.reveal(28, 10)}
+              whileInView={mobileMotion.visible(true)}
+              viewport={mobileMotion.viewport(0.2)}
+              transition={mobileMotion.transition(0, 0.9)}
               className="font-display text-5xl leading-[0.96] tracking-normal text-foreground sm:text-6xl lg:text-7xl"
             >
               Uma assistência técnica com balcão, conversa e suporte direto.
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ delay: 0.22, duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
+              initial={mobileMotion.reveal(18)}
+              whileInView={mobileMotion.visible()}
+              viewport={mobileMotion.viewport(0.2)}
+              transition={mobileMotion.transition(0.22, 0.78)}
               className="mt-7 max-w-[620px] text-base leading-relaxed text-foreground/64 md:text-lg"
             >
               A André Tech combina atendimento humano, diagnóstico técnico e
@@ -81,10 +84,10 @@ export function Stats() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ delay: 0.34, duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+              initial={mobileMotion.reveal(16)}
+              whileInView={mobileMotion.visible()}
+              viewport={mobileMotion.viewport(0.2)}
+              transition={mobileMotion.transition(0.34, 0.72)}
               className="mt-10"
             >
               <Button variant="heroGlass" asChild className="w-full sm:w-auto">
@@ -117,10 +120,10 @@ export function Stats() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 34, filter: "blur(12px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.16 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            initial={mobileMotion.reveal(34, 12)}
+            whileInView={mobileMotion.visible(true)}
+            viewport={mobileMotion.viewport(0.16)}
+            transition={mobileMotion.transition(0, 1)}
             className="material-surface cinematic-panel relative min-h-[520px] overflow-hidden rounded-lg border-y border-primary/14 px-8 py-10 md:px-10 md:py-12"
           >
             <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,.04),transparent_42%,rgba(45,255,20,.035))]" />
@@ -150,14 +153,10 @@ export function Stats() {
                 {credibilitySignals.map((item, i) => (
                   <motion.div
                     key={item.title}
-                    initial={{ opacity: 0, x: 24 }}
+                    initial={mobileMotion.fastPath ? { opacity: 0.94, x: 6 } : { opacity: 0, x: 24 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.24 }}
-                    transition={{
-                      delay: 0.18 + i * 0.08,
-                      duration: 0.72,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
+                    viewport={mobileMotion.viewport(0.24)}
+                    transition={mobileMotion.transition(0.18 + i * 0.08, 0.72)}
                     className="relative border-t border-primary/12 pt-5"
                   >
                     <div className="absolute left-0 top-0 h-px w-24 bg-primary/46" />

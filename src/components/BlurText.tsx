@@ -24,8 +24,8 @@ export function BlurText({
 
   const inView = useInView(ref, {
     once: true,
-    amount: isMobile ? 0.12 : 0.3,
-    margin: isMobile ? "0px 0px -8% 0px" : "0px",
+    amount: isMobile ? 0.01 : 0.3,
+    margin: isMobile ? "0px 0px 34% 0px" : "0px",
   });
 
   const words = text.split(" ");
@@ -43,8 +43,8 @@ export function BlurText({
               willChange: isMobile ? "transform, opacity" : "transform, opacity, filter",
             }}
             initial={{
-              opacity: shouldReduceMotion ? 1 : 0,
-              y: shouldReduceMotion ? 0 : isMobile ? 12 : 24,
+              opacity: shouldReduceMotion ? 1 : isMobile ? 0.9 : 0,
+              y: shouldReduceMotion ? 0 : isMobile ? 6 : 24,
               filter: isMobile || shouldReduceMotion ? "blur(0px)" : "blur(10px)",
             }}
             animate={
@@ -57,11 +57,11 @@ export function BlurText({
                 : {}
             }
             transition={{
-              duration: 0.9,
+              duration: isMobile ? 0.42 : 0.9,
               ease: [0.22, 1, 0.36, 1],
               delay: shouldReduceMotion
                 ? 0
-                : startDelay + i * (isMobile ? Math.min(delay, 0.035) : delay),
+                : startDelay + i * (isMobile ? Math.min(delay, 0.018) : delay),
             }}
           >
             {word}
