@@ -1,0 +1,10 @@
+<svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="André Tech">
+  <circle cx="22" cy="22" r="20.5" fill="#2DFF14" stroke="#111814" stroke-width="3"/>
+  <circle cx="22" cy="22" r="17" stroke="#071008" stroke-opacity=".28" stroke-width="1"/>
+  <path d="M15.2 15.8c0-3 2.4-5.4 5.4-5.4h2.8c3 0 5.4 2.4 5.4 5.4v11.8c0 3-2.4 5.4-5.4 5.4h-2.8c-3 0-5.4-2.4-5.4-5.4V15.8Z" fill="#071008"/>
+  <path d="M19 9.8 16.5 6.9M25 9.8l2.5-2.9" stroke="#071008" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="19.1" cy="15.2" r="1.15" fill="#2DFF14"/>
+  <circle cx="24.9" cy="15.2" r="1.15" fill="#2DFF14"/>
+  <path d="M17.4 29.4h9.2" stroke="#2DFF14" stroke-opacity=".85" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M18.3 25.4 21.5 18h1.1l3.1 7.4h-1.9l-.5-1.3h-2.7l-.5 1.3h-1.8Zm2.8-2.8h1.7l-.8-2.1-.9 2.1Z" fill="#2DFF14"/>
+</svg>
