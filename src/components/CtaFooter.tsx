@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { ArrowUpRight, MapPin, MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useMobileMotion } from "@/lib/motion";
 import {
@@ -116,13 +117,13 @@ export function CtaFooter() {
                   <MapPin className="h-4 w-4 text-primary/65" />
                   {STORE_ADDRESS} · {STORE_DISTRICT} · {STORE_CITY}
                 </span>
-                <a
-                  href="/#servicos"
+                <Link
+                  to="/#servicos"
                   className="inline-flex w-fit items-center gap-2 uppercase tracking-[0.18em] text-primary/70 transition-colors hover:text-primary"
                 >
                   Ver serviços
                   <ArrowUpRight className="h-4 w-4" />
-                </a>
+                </Link>
               </div>
             </div>
           </motion.div>
@@ -143,13 +144,13 @@ export function CtaFooter() {
 
           <nav className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-foreground/50">
             {NAV_ITEMS.map((item) => (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 className="transition-colors hover:text-primary"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
 
             {FOOTER_LINKS.map((item) => (

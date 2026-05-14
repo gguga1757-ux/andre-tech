@@ -1,5 +1,6 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { ArrowDownRight, MapPin, MessageCircle, Store, Wrench } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { BlurText } from "@/components/BlurText";
 import { useMediaQuery } from "@/lib/useMediaQuery";
@@ -45,12 +46,12 @@ function PremiumDevice() {
   const rotate = useTransform(scrollYProgress, [0, 0.35], [-5, -1.5]);
   const scale = useTransform(scrollYProgress, [0, 0.35], [0.9, 0.86]);
   const deviceMotion = disableDecorativeMotion
-    ? { x: 0, y: 0, rotate: -4, scale: 0.84 }
+    ? { x: 0, y: 0, rotate: -4, scale: 0.78 }
     : { x, y, rotate, scale };
 
   return (
     <div
-      className="pointer-events-none absolute top-[49%] right-[-52%] z-[2] flex w-[118vw] -translate-y-1/2 items-center justify-center opacity-[0.24] sm:right-[-22%] sm:w-[92vw] sm:opacity-[0.42] md:right-[-6%] md:w-[52vw] md:opacity-100"
+      className="pointer-events-none absolute top-[50%] right-[-28%] z-[2] flex w-[96vw] -translate-y-1/2 items-center justify-center opacity-[0.18] sm:right-[-20%] sm:w-[84vw] sm:opacity-[0.32] md:right-[-6%] md:w-[52vw] md:opacity-100"
       aria-hidden="true"
     >
       <motion.div
@@ -206,7 +207,7 @@ export function Hero() {
   const mobileMotion = useMobileMotion();
 
   return (
-    <section className="relative min-h-[100svh] overflow-hidden noise md:min-h-[92vh]">
+    <section className="relative min-h-[94svh] overflow-hidden noise md:min-h-[92vh]">
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_68%_42%,rgba(45,255,20,.16),transparent_30%),radial-gradient(circle_at_88%_12%,rgba(255,255,255,.07),transparent_26%),radial-gradient(circle_at_25%_75%,rgba(45,255,20,.08),transparent_35%),linear-gradient(135deg,var(--bg),var(--bg-2)_54%,var(--bg-3))]" />
       <div className="absolute inset-0 z-[1] tech-grid opacity-20" />
       <div className="absolute inset-0 z-[1] calibration-grid opacity-[0.12]" />
@@ -235,8 +236,8 @@ export function Hero() {
       <div className="absolute inset-0 z-[3] bg-[linear-gradient(90deg,rgba(3,6,4,.94)_0%,rgba(3,6,4,.72)_43%,rgba(3,6,4,.26)_72%,rgba(3,6,4,.8)_100%)]" />
       <div className="absolute inset-x-0 bottom-0 z-[4] h-[36vh] bg-gradient-to-t from-background via-background/70 to-transparent" />
 
-      <div className="relative z-10 flex min-h-[100svh] items-center md:min-h-[92vh]">
-        <div className="mx-auto w-full max-w-[var(--max)] px-[var(--gutter)] pb-12 pt-24 sm:pb-16 sm:pt-32 md:pb-20">
+      <div className="relative z-10 flex min-h-[94svh] items-center md:min-h-[92vh]">
+        <div className="mx-auto w-full max-w-[var(--max)] px-[var(--gutter)] pb-10 pt-24 sm:pb-14 sm:pt-28 md:pb-20 md:pt-32">
           <motion.div
             initial={mobileMotion.reveal(34)}
             animate={{ opacity: 1, y: 0 }}
@@ -258,7 +259,7 @@ export function Hero() {
               initial={mobileMotion.reveal(18)}
               animate={{ opacity: 1, y: 0 }}
               transition={mobileMotion.transition(0.4, 0.85)}
-              className="mt-7 max-w-[650px] text-base leading-relaxed text-foreground/72 md:text-lg"
+              className="mt-6 max-w-[650px] text-base leading-relaxed text-foreground/72 md:mt-7 md:text-lg"
             >
               {HERO_SUB}
             </motion.p>
@@ -267,7 +268,7 @@ export function Hero() {
               initial={mobileMotion.reveal(18)}
               animate={{ opacity: 1, y: 0 }}
               transition={mobileMotion.transition(0.58, 0.85)}
-              className="mt-9 flex flex-wrap gap-3 sm:gap-4"
+              className="mt-8 flex flex-wrap gap-3 sm:gap-4 md:mt-9"
             >
               <Button variant="hero" asChild className="w-full sm:w-auto">
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
@@ -277,10 +278,10 @@ export function Hero() {
               </Button>
 
               <Button variant="heroGlass" asChild className="w-full sm:w-auto">
-                <a href="#servicos">
+                <Link to="/#servicos">
                   <ArrowDownRight className="h-4 w-4" />
                   {HERO_CTA_SECONDARY}
-                </a>
+                </Link>
               </Button>
             </motion.div>
 
@@ -288,7 +289,7 @@ export function Hero() {
               initial={mobileMotion.reveal(16)}
               animate={{ opacity: 1, y: 0 }}
               transition={mobileMotion.transition(0.74, 0.82)}
-              className="mt-8 grid max-w-[760px] gap-3 sm:mt-11 sm:grid-cols-3"
+              className="mt-6 grid max-w-[760px] gap-2.5 sm:mt-9 sm:grid-cols-3 md:mt-11"
             >
               {localSignals.map((item) => {
                 const Icon = item.icon;
@@ -296,7 +297,7 @@ export function Hero() {
                 return (
                   <div
                     key={item.label}
-                    className="material-surface rounded-lg px-4 py-3.5"
+                    className="material-surface rounded-lg px-3.5 py-3 md:px-4 md:py-3.5"
                   >
                     <div className="flex items-start gap-3">
                       <Icon className="mt-0.5 h-4 w-4 text-primary" />

@@ -144,7 +144,7 @@ html {
 #diferenciais,
 #produtos,
 #contato {
-  scroll-margin-top: 120px;
+  scroll-margin-top: 0;
 }
 
 body {
@@ -196,8 +196,14 @@ img,
 video,
 canvas,
 svg {
-  display: block;
   max-width: 100%;
+}
+
+img:not(.hidden),
+video:not(.hidden),
+canvas:not(.hidden),
+svg:not(.hidden) {
+  display: block;
 }
 
 a {
@@ -1083,6 +1089,88 @@ a {
       radial-gradient(ellipse at 50% 50%, rgba(45, 255, 20, 0.02), transparent 70%);
     mix-blend-mode: multiply;
     opacity: 0.15;
+  }
+}
+
+@media (max-width: 1023px) {
+  html {
+    scroll-padding-top: 96px;
+  }
+
+  #servicos,
+  #processo,
+  #diferenciais,
+  #produtos,
+  #contato {
+    scroll-margin-top: 0;
+  }
+
+  [data-slot="button"],
+  button,
+  a {
+    min-height: 44px;
+  }
+
+  header .nav-reflection,
+  header .nav-sheen {
+    display: none !important;
+  }
+
+  .ambient-root {
+    opacity: 0.28;
+    mix-blend-mode: normal;
+    contain: paint;
+  }
+
+  .ambient-vignette {
+    filter: none;
+  }
+
+  .ambient-orb,
+  .ambient-scan,
+  .ambient-depth-line,
+  .ambient-reticle,
+  .ambient-particle:nth-child(n + 10) {
+    display: none;
+  }
+
+  .premium-site::before {
+    opacity: 0.2;
+    animation: none;
+  }
+
+  .material-surface,
+  .liquid-glass,
+  .liquid-glass-strong,
+  .media-treatment,
+  .photo-slot {
+    backdrop-filter: blur(10px) saturate(114%);
+    -webkit-backdrop-filter: blur(10px) saturate(114%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.09),
+      0 18px 52px rgba(0, 0, 0, 0.26);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .premium-site h1 {
+    font-size: clamp(3.4rem, 8vw, 4.2rem) !important;
+    line-height: 1.02 !important;
+  }
+
+  .premium-site h2 {
+    font-size: clamp(3rem, 7vw, 4rem) !important;
+    line-height: 1.04 !important;
+  }
+
+  .premium-site h3 {
+    font-size: clamp(2rem, 4.8vw, 3rem) !important;
+    line-height: 1.12 !important;
+  }
+
+  .premium-site > section:not(:first-child) {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
 }
 

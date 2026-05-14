@@ -26,6 +26,8 @@ function ProductCard({ product }: { product: Product }) {
           src={product.image}
           alt={product.name}
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          loading="lazy"
+          decoding="async"
         />
       </div>
       <div className="p-6">
@@ -54,7 +56,7 @@ function ProductCard({ product }: { product: Product }) {
             {product.status}
           </span>
         </div>
-        <Button asChild className="w-full">
+        <Button asChild className="min-h-11 w-full">
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
             <MessageCircle className="mr-2 h-4 w-4" />
             {product.status === "disponível" ? "Comprar pelo WhatsApp" : "Encomendar"}
@@ -96,7 +98,7 @@ export function ProductsPage() {
             <p className="mt-6 max-w-2xl mx-auto text-lg leading-relaxed text-foreground/64">
               Aparelhos, acessórios, áudio e tecnologia selecionados para quem busca praticidade, confiança e suporte próximo.
             </p>
-            <Button variant="heroGlass" className="mt-8" asChild>
+            <Button variant="heroGlass" className="mt-8 min-h-11" asChild>
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-4 w-4" />
                 Chamar no WhatsApp
@@ -115,7 +117,8 @@ export function ProductsPage() {
                 key={category}
                 variant={selectedCategory === category ? "default" : "outline"}
                 onClick={() => setSelectedCategory(category)}
-                className="rounded-full"
+                aria-pressed={selectedCategory === category}
+                className="min-h-11 rounded-full px-5"
               >
                 {category}
               </Button>
@@ -131,9 +134,40 @@ export function ProductsPage() {
             layout
             className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
           >
-            {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="material-surface col-span-full rounded-lg px-6 py-10 text-center"
+              >
+                <div className="mx-auto max-w-[560px]">
+                  <div className="text-xs uppercase tracking-[0.22em] text-primary/65">
+                    categoria sem itens ativos
+                  </div>
+                  <h2 className="mt-4 text-3xl leading-tight text-foreground">
+                    Nenhum produto encontrado em {selectedCategory}.
+                  </h2>
+                  <p className="mt-4 text-sm leading-relaxed text-foreground/60 md:text-base">
+                    A loja pode encomendar ou indicar uma alternativa pelo
+                    WhatsApp, mantendo o atendimento direto da AndrÃ© Tech.
+                  </p>
+                  <Button variant="heroGlass" className="mt-7 min-h-11" asChild>
+                    <a
+                      href={WHATSAPP_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MessageCircle className="mr-2 h-4 w-4" />
+                      Consultar disponibilidade
+                    </a>
+                  </Button>
+                </div>
+              </motion.div>
+            )}
           </motion.div>
         </div>
       </section>
