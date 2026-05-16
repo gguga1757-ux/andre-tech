@@ -144,12 +144,16 @@ export function ServicesBento() {
               <div className="absolute right-0 bottom-0 h-24 w-px bg-primary/28" />
               <div className="absolute inset-x-10 top-1/2 h-px bg-gradient-to-r from-transparent via-primary/18 to-transparent" />
               <div className="absolute right-[18%] top-[18%] hidden h-40 w-40 rounded-full border border-primary/16 md:block" />
-              <img
-                src={DEVICE_IMAGE}
-                alt=""
-                className="absolute bottom-[-8%] right-[-16%] h-[280px] max-h-none w-auto opacity-[0.26] mix-blend-screen [filter:drop-shadow(0_44px_110px_rgba(0,0,0,.8))_drop-shadow(0_0_32px_rgba(45,255,20,.12))] md:bottom-[-28%] md:right-[-18%] md:h-[620px] md:opacity-30"
-                draggable={false}
-              />
+              {!mobileMotion.isMobile && (
+                <img
+                  src={DEVICE_IMAGE}
+                  alt=""
+                  className="absolute bottom-[-8%] right-[-16%] h-[280px] max-h-none w-auto opacity-[0.26] mix-blend-screen [filter:drop-shadow(0_44px_110px_rgba(0,0,0,.8))_drop-shadow(0_0_32px_rgba(45,255,20,.12))] md:bottom-[-28%] md:right-[-18%] md:h-[620px] md:opacity-30"
+                  loading="lazy"
+                  decoding="async"
+                  draggable={false}
+                />
+              )}
 
               <div className="relative z-10 flex min-h-[390px] max-w-[470px] flex-col justify-end">
                 <div className="mb-8 text-xs uppercase tracking-[0.24em] text-primary/75">

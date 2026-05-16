@@ -98,6 +98,8 @@ function ProductEcosystem() {
           src={DEVICE_IMAGE}
           alt=""
           className="relative z-10 w-full object-contain opacity-90 md:max-h-[600px] md:w-auto [filter:drop-shadow(0_48px_120px_rgba(0,0,0,.82))_drop-shadow(0_0_32px_rgba(45,255,20,.15))]"
+          loading="lazy"
+          decoding="async"
           draggable={false}
         />
         <div className="absolute inset-[5%] z-20 overflow-hidden opacity-30 mix-blend-screen [clip-path:polygon(9%_2%,88%_0,82%_96%,8%_94%)]">
@@ -219,7 +221,7 @@ export function Products() {
             </div>
           </div>
 
-          <ProductEcosystem />
+          {!mobileMotion.isMobile && <ProductEcosystem />}
         </div>
       </div>
     </section>

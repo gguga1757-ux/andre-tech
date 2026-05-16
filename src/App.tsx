@@ -17,6 +17,7 @@ import { PARTNERS } from "@/lib/constants";
 import { ProductsPage } from "@/components/ProductsPage";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { Preloader } from "@/components/Preloader";
+import { useMediaQuery } from "@/lib/useMediaQuery";
 
 function Partners() {
   return (
@@ -65,15 +66,25 @@ function HomePage() {
 }
 
 export default function App() {
-  const [showPreloader, setShowPreloader] = useState(true);
+  const isMobile = useMediaQuery("(max-width: 767px)");
+  const [showPreloader, setShowPreloader] = useState(
+    () =>
+      typeof window === "undefined" ||
+      !window.matchMedia("(max-width: 767px)").matches
+  );
 
   useEffect(() => {
+    if (isMobile) {
+      setShowPreloader(false);
+      return;
+    }
+
     const timer = window.setTimeout(() => {
       setShowPreloader(false);
     }, 2050);
 
     return () => window.clearTimeout(timer);
-  }, []);
+  }, [isMobile]);
 
   return (
     <>

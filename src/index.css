@@ -1285,20 +1285,13 @@ a {
     display: none !important;
   }
 
-  .premium-site::before {
-    opacity: 0.16;
-    animation: none;
-    background-size: 220px 220px, 100% 6px;
-  }
-
+  .premium-site::before,
   .premium-site::after {
-    background:
-      radial-gradient(ellipse at 50% 16%, transparent 42%, rgba(0, 0, 0, 0.28) 86%, rgba(0, 0, 0, 0.48) 100%),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.012), transparent 24%, transparent 76%, rgba(45, 255, 20, 0.014));
-    opacity: 0.12;
+    display: none;
   }
 
   .ambient-root {
+    display: none;
     opacity: 0.2;
     mix-blend-mode: normal;
     contain: paint;
@@ -1339,13 +1332,11 @@ a {
 
   .premium-site .tech-grid,
   .premium-site .calibration-grid {
-    opacity: 0.07 !important;
+    display: none !important;
   }
 
   .noise::after {
-    opacity: 0.16;
-    animation: none;
-    background-size: 220px 220px;
+    display: none;
   }
 
   .premium-site :is(section, article, p, h2, h3)[style*="opacity: 0"] {

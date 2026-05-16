@@ -118,6 +118,10 @@ export function AmbientExperience() {
     return () => ctx.revert();
   }, []);
 
+  if (isMobileViewport) {
+    return null;
+  }
+
   return (
     <div ref={rootRef} className="ambient-root" aria-hidden="true">
       <div className="ambient-vignette" />

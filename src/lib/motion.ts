@@ -22,8 +22,8 @@ export function useMobileMotion() {
   const reveal = (y = 22, blur = 0) => {
     if (fastPath) {
       return blur > 0
-        ? { opacity: 0.94, y: Math.min(y, 8), filter: "blur(0px)" }
-        : { opacity: 0.94, y: Math.min(y, 8) };
+        ? { opacity: 1, y: 0, filter: "blur(0px)" }
+        : { opacity: 1, y: 0 };
     }
 
     return blur > 0
@@ -36,7 +36,7 @@ export function useMobileMotion() {
 
   const transition = (delay = 0, duration = 0.78) => ({
     delay: fastPath ? 0 : delay,
-    duration: fastPath ? 0.34 : duration,
+    duration: fastPath ? 0.01 : duration,
     ease: SMOOTH_EASE,
   });
 

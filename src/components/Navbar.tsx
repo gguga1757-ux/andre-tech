@@ -108,7 +108,7 @@ export function Navbar() {
       return;
     }
 
-    function handleEscape(event: KeyboardEvent) {
+    function handleEscape(event: globalThis.KeyboardEvent) {
       if (event.key === "Escape") {
         setMenuOpen(false);
       }

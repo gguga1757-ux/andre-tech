@@ -11,7 +11,7 @@ const technicalLabels = [
   "teste na entrega",
 ];
 
-function ProcessStep({
+function DesktopProcessStep({
   step,
   index,
 }: {
@@ -99,15 +99,93 @@ function ProcessStep({
   );
 }
 
-export function Process() {
+function MobileProcessStep({
+  step,
+  index,
+}: {
+  step: (typeof PROCESS_STEPS)[number];
+  index: number;
+}) {
+  return (
+    <article className="group relative py-7 pl-14 md:py-16 md:pl-24">
+      <div className="absolute left-[-23px] top-12 z-20 grid h-[46px] w-[46px] place-items-center rounded-full border border-primary/35 bg-[radial-gradient(circle_at_50%_42%,rgba(45,255,20,.32),rgba(45,255,20,.12)_42%,rgba(3,6,4,.94)_74%)] text-sm font-semibold text-primary md:top-16">
+        <span className="absolute inset-1 rounded-full border border-white/10" />
+        <span className="relative">{step.n}</span>
+      </div>
+
+      <div className="material-surface cinematic-panel relative overflow-hidden rounded-lg border-t border-primary/15 px-6 pb-6 pt-8 md:px-8">
+        <div className="pointer-events-none absolute top-0 h-px w-44 bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
+
+        <div className="mb-5 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <span className="micro-hud px-2.5 py-1.5">
+            {technicalLabels[index]}
+          </span>
+          <span className="h-px w-10 bg-primary/20" />
+          <span className="text-[0.68rem] uppercase tracking-[0.2em] text-foreground/30">
+            etapa {step.n}
+          </span>
+        </div>
+
+        <h3 className="max-w-[620px] text-3xl leading-tight tracking-normal text-foreground md:text-5xl">
+          {step.title}
+        </h3>
+
+        <p className="mt-5 max-w-[620px] text-base leading-relaxed text-foreground/62">
+          {step.body}
+        </p>
+
+        <div className="mt-9 flex max-w-[620px] items-center justify-between border-t border-primary/10 pt-4 text-[0.65rem] uppercase tracking-[0.18em] text-foreground/28">
+          <span>orientaÃ§Ã£o clara</span>
+          <span className="hidden sm:inline">andre tech atendimento</span>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function ProcessTimelineDesktop() {
   const timelineRef = useRef<HTMLDivElement>(null);
-  const mobileMotion = useMobileMotion();
-  const isMobile = mobileMotion.isMobile;
   const { scrollYProgress } = useScroll({
     target: timelineRef,
     offset: ["start 72%", "end 45%"],
   });
   const activeLineScale = useTransform(scrollYProgress, [0, 1], [0.02, 1]);
+
+  return (
+    <div ref={timelineRef} className="relative ml-auto max-w-[940px]">
+      <div className="absolute bottom-8 left-0 top-8 z-0 w-px bg-[linear-gradient(180deg,transparent,rgba(45,255,20,.18)_12%,rgba(255,255,255,.09)_48%,rgba(45,255,20,.14)_86%,transparent)]" />
+      <motion.div
+        style={{ scaleY: activeLineScale, transformOrigin: "top" }}
+        className="absolute bottom-8 left-0 top-8 z-10 w-px bg-[linear-gradient(180deg,transparent,rgba(45,255,20,.88)_10%,rgba(180,255,170,.7)_54%,rgba(45,255,20,.34)_100%)] shadow-[0_0_26px_rgba(45,255,20,.24)]"
+      />
+      <motion.div
+        animate={{ opacity: [0.2, 0.42, 0.2] }}
+        transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-8 left-[-14px] top-8 z-0 w-7 bg-[linear-gradient(90deg,transparent,rgba(45,255,20,.11),transparent)] blur-md"
+      />
+
+      {PROCESS_STEPS.map((step, i) => (
+        <DesktopProcessStep key={step.n} step={step} index={i} />
+      ))}
+    </div>
+  );
+}
+
+function ProcessTimelineMobile() {
+  return (
+    <div className="relative ml-auto max-w-[940px]">
+      <div className="absolute bottom-8 left-0 top-8 z-0 w-px bg-[linear-gradient(180deg,transparent,rgba(45,255,20,.18)_12%,rgba(255,255,255,.09)_48%,rgba(45,255,20,.14)_86%,transparent)]" />
+      <div className="absolute bottom-8 left-0 top-8 z-10 w-px origin-top scale-y-100 bg-[linear-gradient(180deg,transparent,rgba(45,255,20,.88)_10%,rgba(180,255,170,.7)_54%,rgba(45,255,20,.34)_100%)] shadow-[0_0_26px_rgba(45,255,20,.24)]" />
+
+      {PROCESS_STEPS.map((step, i) => (
+        <MobileProcessStep key={step.n} step={step} index={i} />
+      ))}
+    </div>
+  );
+}
+
+export function Process() {
+  const mobileMotion = useMobileMotion();
 
   return (
     <section id="processo" className="noise relative overflow-hidden py-40 md:py-52">
@@ -150,26 +228,7 @@ export function Process() {
           </motion.p>
         </div>
 
-        <div ref={timelineRef} className="relative ml-auto max-w-[940px]">
-          <div className="absolute bottom-8 left-0 top-8 z-0 w-px bg-[linear-gradient(180deg,transparent,rgba(45,255,20,.18)_12%,rgba(255,255,255,.09)_48%,rgba(45,255,20,.14)_86%,transparent)]" />
-          <motion.div
-            style={
-              isMobile
-                ? { scaleY: 1, transformOrigin: "top" }
-                : { scaleY: activeLineScale, transformOrigin: "top" }
-            }
-            className="absolute bottom-8 left-0 top-8 z-10 w-px bg-[linear-gradient(180deg,transparent,rgba(45,255,20,.88)_10%,rgba(180,255,170,.7)_54%,rgba(45,255,20,.34)_100%)] shadow-[0_0_26px_rgba(45,255,20,.24)]"
-          />
-          <motion.div
-            animate={isMobile ? undefined : { opacity: [0.2, 0.42, 0.2] }}
-            transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-8 left-[-14px] top-8 z-0 w-7 bg-[linear-gradient(90deg,transparent,rgba(45,255,20,.11),transparent)] blur-md"
-          />
-
-          {PROCESS_STEPS.map((step, i) => (
-            <ProcessStep key={step.n} step={step} index={i} />
-          ))}
-        </div>
+        {mobileMotion.isMobile ? <ProcessTimelineMobile /> : <ProcessTimelineDesktop />}
       </div>
     </section>
   );

@@ -21,6 +21,7 @@ export function BlurText({
   const ref = useRef<any>(null);
   const isMobile = useMediaQuery("(max-width: 767px)");
   const shouldReduceMotion = useReducedMotion();
+  const simplifiedMotion = isMobile || shouldReduceMotion;
 
   const inView = useInView(ref, {
     once: true,
@@ -29,6 +30,14 @@ export function BlurText({
   });
 
   const words = text.split(" ");
+
+  if (simplifiedMotion) {
+    return (
+      <Tag ref={ref} className={className} aria-label={text}>
+        {text}
+      </Tag>
+    );
+  }
 
   return (
     <Tag ref={ref} className={className} aria-label={text}>
@@ -40,12 +49,12 @@ export function BlurText({
           <motion.span
             className="inline-block"
             style={{
-              willChange: isMobile ? "transform, opacity" : "transform, opacity, filter",
+              willChange: "transform, opacity, filter",
             }}
             initial={{
-              opacity: shouldReduceMotion ? 1 : isMobile ? 0.9 : 0,
-              y: shouldReduceMotion ? 0 : isMobile ? 6 : 24,
-              filter: isMobile || shouldReduceMotion ? "blur(0px)" : "blur(10px)",
+              opacity: 0,
+              y: 24,
+              filter: "blur(10px)",
             }}
             animate={
               inView
@@ -57,11 +66,9 @@ export function BlurText({
                 : {}
             }
             transition={{
-              duration: isMobile ? 0.42 : 0.9,
+              duration: 0.9,
               ease: [0.22, 1, 0.36, 1],
-              delay: shouldReduceMotion
-                ? 0
-                : startDelay + i * (isMobile ? Math.min(delay, 0.018) : delay),
+              delay: startDelay + i * delay,
             }}
           >
             {word}
