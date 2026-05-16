@@ -1169,8 +1169,8 @@ a {
   }
 
   .premium-site > section:not(:first-child) {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 }
 
@@ -1219,8 +1219,8 @@ a {
   }
 
   .premium-site > section:not(:first-child) {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
   }
 
   .premium-site h1,
@@ -1471,6 +1471,53 @@ a {
     max-width: calc(100% - 2rem);
     font-size: 0.54rem;
     line-height: 1.4;
+  }
+
+  /* ── Ritmo mobile: reduzir gaps internos excessivos ── */
+  .premium-site section .grid[class*="gap-14"],
+  .premium-site section .grid[class*="gap-16"] {
+    gap: 2.5rem !important;
+  }
+
+  .premium-site section .grid[class*="gap-12"] {
+    gap: 2rem !important;
+  }
+
+  /* ── Margens top excessivas dentro de seções ── */
+  .premium-site section [class*="mt-20"]:not([class*="md:mt-20"]) {
+    margin-top: 2.5rem;
+  }
+
+  /* ── Min-height: reduzir painéis altos ── */
+  .premium-site [class*="min-h-[520px]"],
+  .premium-site [class*="min-h-[480px]"] {
+    min-height: 360px !important;
+  }
+
+  .premium-site [class*="min-h-[390px]"] {
+    min-height: 280px !important;
+  }
+
+  /* ── LabMedia: itens de mídia mais compactos ── */
+  .premium-site .media-treatment[class*="min-h-[330px]"] {
+    min-height: 220px !important;
+  }
+
+  /* ── Stats: painel principal ── */
+  .premium-site .material-surface[class*="min-h-[520px]"] {
+    min-height: 360px !important;
+  }
+
+  /* ── Decorativos: ocultar orbs blur médios no mobile ── */
+  .premium-site [class*="blur-[100px]"],
+  .premium-site [class*="blur-[90px]"],
+  .premium-site [class*="blur-[80px]"] {
+    display: none !important;
+  }
+
+  /* ── Bottom gradient do Hero: reduzir altura ── */
+  .premium-site section [class*="h-[36vh]"] {
+    height: 22vh !important;
   }
 }
 

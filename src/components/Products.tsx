@@ -35,7 +35,7 @@ function ProductEcosystem() {
       whileInView={mobileMotion.visible(true)}
       viewport={mobileMotion.viewport(0.16)}
       transition={mobileMotion.transition(0, 1)}
-      className="relative min-h-[520px] overflow-visible lg:min-h-[660px]"
+      className="relative hidden min-h-[200px] overflow-hidden md:block md:min-h-[440px] md:overflow-visible lg:min-h-[660px]"
       aria-hidden="true"
     >
       <div className="absolute inset-x-[8%] bottom-[5%] h-28 rounded-full bg-[radial-gradient(ellipse,rgba(0,0,0,.78),rgba(45,255,20,.08)_48%,transparent_74%)] blur-[34px]" />
@@ -62,7 +62,7 @@ function ProductEcosystem() {
             : { y: [0, -10, 0], rotate: [-6, -4, -6] }
         }
         transition={{ duration: 8.6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute left-[3%] top-[12%] h-44 w-52 opacity-80 md:left-[4%] md:top-[14%]"
+        className="absolute left-[3%] top-[12%] h-44 w-52 opacity-80 hidden md:block md:left-[4%] md:top-[14%]"
       >
         <div className="absolute left-1/2 top-3 h-32 w-40 -translate-x-1/2 rounded-t-full border-[10px] border-b-0 border-white/10 shadow-[0_0_45px_rgba(45,255,20,.08)]" />
         <div className="absolute bottom-5 left-5 h-20 w-14 rounded-[28px] border border-primary/18 bg-[linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.025))] shadow-[inset_0_1px_0_rgba(255,255,255,.18),0_24px_70px_rgba(0,0,0,.45)]" />
@@ -76,7 +76,7 @@ function ProductEcosystem() {
             : { y: [0, 12, 0], rotate: [8, 11, 8] }
         }
         transition={{ duration: 9.2, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute right-[2%] top-[16%] h-44 w-32 opacity-[0.88] md:right-[8%] md:top-[12%]"
+        className="absolute right-[2%] top-[16%] h-44 w-32 opacity-[0.88] hidden md:block md:right-[8%] md:top-[12%]"
       >
         <div className="absolute left-1/2 top-0 h-12 w-12 -translate-x-1/2 rounded-full border border-primary/18 bg-white/[0.035] blur-[1px]" />
         <div className="absolute left-1/2 top-8 h-28 w-10 -translate-x-1/2 rounded-full border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02))]" />
@@ -92,12 +92,12 @@ function ProductEcosystem() {
             : { y: [0, -18, 0], rotateZ: [-4, -2, -4], rotateY: [0, -4, 0] }
         }
         transition={{ duration: 9.8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[-4%] left-1/2 z-20 w-[min(360px,70vw)] -translate-x-1/2 md:bottom-[-2%] lg:w-[420px]"
+        className="absolute left-1/2 top-1/2 z-20 hidden w-[min(280px,70vw)] -translate-x-1/2 -translate-y-1/2 md:block md:bottom-[-2%] md:top-auto md:left-1/2 md:right-auto md:w-[min(300px,52vw)] md:-translate-x-1/2 md:-translate-y-0 lg:w-[420px]"
       >
         <img
           src={DEVICE_IMAGE}
           alt=""
-          className="relative z-10 max-h-[600px] w-auto object-contain opacity-90 [filter:drop-shadow(0_48px_120px_rgba(0,0,0,.82))_drop-shadow(0_0_32px_rgba(45,255,20,.15))]"
+          className="relative z-10 w-full object-contain opacity-90 md:max-h-[600px] md:w-auto [filter:drop-shadow(0_48px_120px_rgba(0,0,0,.82))_drop-shadow(0_0_32px_rgba(45,255,20,.15))]"
           draggable={false}
         />
         <div className="absolute inset-[5%] z-20 overflow-hidden opacity-30 mix-blend-screen [clip-path:polygon(9%_2%,88%_0,82%_96%,8%_94%)]">
@@ -132,7 +132,7 @@ export function Products() {
       <div className="scene-rail left-[var(--gutter)] bottom-28 h-px w-[26vw]" />
 
       <div className="relative mx-auto max-w-[var(--max)] px-[var(--gutter)]">
-        <div className="grid items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
+        <div className="grid items-center gap-8 md:grid-cols-[1fr_0.72fr] md:gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
           <div className="relative z-10 max-w-[760px]">
             <motion.div
               initial={mobileMotion.reveal(18)}

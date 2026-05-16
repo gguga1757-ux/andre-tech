@@ -139,7 +139,7 @@ function PremiumDevice() {
           <img
             src={DEVICE_IMAGE}
             alt=""
-            className="relative z-10 max-h-[46svh] w-auto max-w-[min(330px,78vw)] object-contain md:max-h-[58vh] md:max-w-[min(380px,60vw)]"
+            className="relative z-10 max-h-[36svh] w-auto max-w-[min(280px,68vw)] object-contain md:max-h-[58vh] md:max-w-[min(380px,60vw)]"
             style={{
               filter:
                 "drop-shadow(0 30px 82px rgba(0, 0, 0, 0.78)) drop-shadow(0 0 20px rgba(45, 255, 20, 0.15)) drop-shadow(-4px 0 12px rgba(45, 255, 20, 0.06))",
@@ -207,7 +207,7 @@ export function Hero() {
   const mobileMotion = useMobileMotion();
 
   return (
-    <section className="relative min-h-[94svh] overflow-hidden noise md:min-h-[92vh]">
+    <section className="relative min-h-[78svh] overflow-hidden noise md:min-h-[92vh]">
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_68%_42%,rgba(45,255,20,.16),transparent_30%),radial-gradient(circle_at_88%_12%,rgba(255,255,255,.07),transparent_26%),radial-gradient(circle_at_25%_75%,rgba(45,255,20,.08),transparent_35%),linear-gradient(135deg,var(--bg),var(--bg-2)_54%,var(--bg-3))]" />
       <div className="absolute inset-0 z-[1] tech-grid opacity-20" />
       <div className="absolute inset-0 z-[1] calibration-grid opacity-[0.12]" />
@@ -236,8 +236,8 @@ export function Hero() {
       <div className="absolute inset-0 z-[3] bg-[linear-gradient(90deg,rgba(3,6,4,.94)_0%,rgba(3,6,4,.72)_43%,rgba(3,6,4,.26)_72%,rgba(3,6,4,.8)_100%)]" />
       <div className="absolute inset-x-0 bottom-0 z-[4] h-[36vh] bg-gradient-to-t from-background via-background/70 to-transparent" />
 
-      <div className="relative z-10 flex min-h-[94svh] items-center md:min-h-[92vh]">
-        <div className="mx-auto w-full max-w-[var(--max)] px-[var(--gutter)] pb-10 pt-24 sm:pb-14 sm:pt-28 md:pb-20 md:pt-32">
+      <div className="relative z-10 flex min-h-[78svh] items-center md:min-h-[92vh]">
+        <div className="mx-auto w-full max-w-[var(--max)] px-[var(--gutter)] pb-8 pt-20 sm:pb-14 sm:pt-28 md:pb-20 md:pt-32">
           <motion.div
             initial={mobileMotion.reveal(34)}
             animate={{ opacity: 1, y: 0 }}
@@ -289,7 +289,7 @@ export function Hero() {
               initial={mobileMotion.reveal(16)}
               animate={{ opacity: 1, y: 0 }}
               transition={mobileMotion.transition(0.74, 0.82)}
-              className="mt-6 grid max-w-[760px] gap-2.5 sm:mt-9 sm:grid-cols-3 md:mt-11"
+              className="mt-5 grid max-w-[760px] gap-2 sm:mt-9 sm:grid-cols-3 md:mt-11"
             >
               {localSignals.map((item) => {
                 const Icon = item.icon;

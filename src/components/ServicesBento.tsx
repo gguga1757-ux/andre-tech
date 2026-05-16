@@ -137,7 +137,7 @@ export function ServicesBento() {
               whileInView={mobileMotion.visible(true)}
               viewport={mobileMotion.viewport(0.16)}
               transition={mobileMotion.transition(0, 0.9)}
-              className="material-surface cinematic-panel relative mb-12 min-h-[480px] overflow-hidden rounded-lg border-y border-primary/15 px-8 py-10 md:mb-20 md:px-10 md:py-12"
+              className="material-surface cinematic-panel relative mb-8 min-h-[480px] overflow-hidden rounded-lg border-y border-primary/15 px-8 py-10 md:mb-20 md:px-10 md:py-12"
             >
               <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(255,255,255,.04),transparent_36%,rgba(45,255,20,.04)_100%)]" />
               <div className="absolute left-0 top-0 h-24 w-px bg-primary/42" />
@@ -147,7 +147,7 @@ export function ServicesBento() {
               <img
                 src={DEVICE_IMAGE}
                 alt=""
-                className="absolute bottom-[-24%] right-[-46%] h-[520px] max-h-none w-auto opacity-[0.22] mix-blend-screen [filter:drop-shadow(0_44px_110px_rgba(0,0,0,.8))_drop-shadow(0_0_32px_rgba(45,255,20,.12))] md:bottom-[-28%] md:right-[-18%] md:h-[620px] md:opacity-30"
+                className="absolute bottom-[-8%] right-[-16%] h-[280px] max-h-none w-auto opacity-[0.26] mix-blend-screen [filter:drop-shadow(0_44px_110px_rgba(0,0,0,.8))_drop-shadow(0_0_32px_rgba(45,255,20,.12))] md:bottom-[-28%] md:right-[-18%] md:h-[620px] md:opacity-30"
                 draggable={false}
               />
 

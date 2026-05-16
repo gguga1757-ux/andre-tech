@@ -109,7 +109,7 @@ export function Faq() {
               whileInView={mobileMotion.visible(true)}
               viewport={mobileMotion.viewport(0.18)}
               transition={mobileMotion.transition(0, 0.95)}
-              className="material-surface cinematic-panel relative overflow-hidden rounded-lg border-y border-primary/14 px-7 py-12 md:px-10 md:py-16"
+              className="material-surface cinematic-panel relative overflow-hidden rounded-lg border-y border-primary/14 px-7 py-8 md:px-10 md:py-16"
             >
               <div className="absolute inset-0 bg-[linear-gradient(112deg,rgba(255,255,255,.045),transparent_44%,rgba(45,255,20,.035))]" />
               <div className="absolute left-0 top-0 h-28 w-px bg-primary/40" />
@@ -140,7 +140,7 @@ export function Faq() {
               </div>
             </motion.article>
 
-            <div className="mt-10 grid gap-y-8 md:grid-cols-2 md:gap-x-12 md:gap-y-14">
+            <div className="mt-8 grid gap-y-7 md:grid-cols-2 md:mt-10 md:gap-x-12 md:gap-y-14">
               {supporting.map((item, i) => (
                 <motion.article
                   key={item.code}

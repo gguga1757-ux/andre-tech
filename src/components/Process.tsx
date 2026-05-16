@@ -43,7 +43,7 @@ function ProcessStep({
         delay: isMobile ? 0 : index * 0.06,
         ease: mobileMotion.ease,
       }}
-      className="group relative py-12 pl-16 md:py-16 md:pl-24"
+      className="group relative py-7 pl-14 md:py-16 md:pl-24"
     >
       <motion.div
         style={{ opacity: nodeOpacity, scale: nodeScale }}
@@ -121,7 +121,7 @@ export function Process() {
       <div className="scene-rail right-[var(--gutter)] top-28 h-px w-[28vw]" />
 
       <div className="relative z-10 mx-auto max-w-[var(--max)] px-[var(--gutter)]">
-        <div className="mb-16 max-w-[760px] md:mb-20">
+        <div className="mb-10 max-w-[760px] md:mb-20">
           <motion.div
             initial={mobileMotion.reveal(18)}
             whileInView={mobileMotion.visible()}

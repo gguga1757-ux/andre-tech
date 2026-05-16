@@ -87,7 +87,7 @@ export function Pourquoi() {
           </motion.article>
         </div>
 
-        <div className="mt-20 grid gap-y-14 md:grid-cols-12 md:gap-x-8 lg:mt-24">
+        <div className="mt-12 grid gap-y-14 md:grid-cols-12 md:gap-x-8 lg:mt-24">
           <motion.div
             initial={mobileMotion.reveal(26, 8)}
             whileInView={mobileMotion.visible(true)}
